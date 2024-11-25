@@ -270,6 +270,9 @@ const StorePage = () => {
             <Link href="/store/person" passHref>
               <Button variant="link">Person</Button>
             </Link>
+            <Link href="/store/ferret" passHref>
+              <Button variant="link">Ferret Temp</Button>
+            </Link>
           </ul>
           <h5 className="mt-4">Primary Colors</h5>
           <Form.Check
