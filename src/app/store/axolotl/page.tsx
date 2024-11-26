@@ -21,40 +21,40 @@ type Product = {
   pickupInperson?: boolean;
 };
 
-const tiger: Product = {
-  name: 'Tiger',
+const axolotl: Product = {
+  name: 'Axolotl',
   type: 'animal',
   animal: true,
   primaryColor: ['red', 'blue'], // Array of color names
   secondaryColor: [], // Array of color names
   thirdColor: [],
-  price: '$35',
-  image: ['/images/Products/bengal_1.jpg'], // array of images depending on the color selected
+  price: '$20',
+  image: ['/images/Products/axolotl_pink_1.jpg'], // array of images depending on the color selected
   size: {
     min: 0.5, // Minimum size
     max: 1.2, // Maximum size
   },
 };
 
-const TigerPage = () => {
+const AxolotlPage = () => {
   const [size, setSize] = useState('');
   const [selectedPrimaryColors, handlePrimaryColorChange] = useState<string[]>([]);
   const [selectedSecondaryColors, handleSecondaryColorChange] = useState<string[]>([]);
   const [selectedThirdColors, handleThirdColorChange] = useState<string[]>([]);
 
-  const sizeFilter = size ? parseFloat(size) >= tiger.size.min && parseFloat(size) <= tiger.size.max : true;
+  const sizeFilter = size ? parseFloat(size) >= axolotl.size.min && parseFloat(size) <= axolotl.size.max : true;
 
   const primaryColorFilter =
-    selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => tiger.primaryColor.includes(color));
+    selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => axolotl.primaryColor.includes(color));
 
   const secondaryColorFilter =
     selectedSecondaryColors.length === 0 ||
-    selectedSecondaryColors.some((color) => tiger.secondaryColor?.includes(color));
+    selectedSecondaryColors.some((color) => axolotl.secondaryColor?.includes(color));
 
   const thirdColorFilter =
-    selectedThirdColors.length === 0 || selectedThirdColors.some((color) => tiger.thirdColor?.includes(color));
+    selectedThirdColors.length === 0 || selectedThirdColors.some((color) => axolotl.thirdColor?.includes(color));
 
-  const displayedTiger = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
+  const displayedAxolotl = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
 
   return (
     <Container fluid>
@@ -64,8 +64,8 @@ const TigerPage = () => {
           <Card className="border-0">
             <Card.Img
               variant="top"
-              src={tiger.image}
-              alt={tiger.name}
+              src={axolotl.image}
+              alt={axolotl.name}
               className="img-fluid"
               style={{ height: '500px' }}
             />
@@ -74,8 +74,8 @@ const TigerPage = () => {
 
         {/* Details Section */}
         <Col md={6}>
-          <h1>{tiger.name}</h1>
-          <h2>{tiger.price}</h2>
+          <h1>{axolotl.name}</h1>
+          <h2>{axolotl.price}</h2>
           <hr />
           <h5 className="mt-4">Primary Colors</h5>
           <Form.Group controlId="primaryColors">
@@ -123,7 +123,7 @@ const TigerPage = () => {
           <Form className="d-flex">
             <Form.Control
               type="text"
-              placeholder={`Enter size (${tiger.size.min} - ${tiger.size.max})`}
+              placeholder={`Enter size (${axolotl.size.min} - ${axolotl.size.max})`}
               value={size}
               onChange={(e) => setSize(e.target.value)}
             />
@@ -137,4 +137,4 @@ const TigerPage = () => {
   );
 };
 
-export default TigerPage;
+export default AxolotlPage;

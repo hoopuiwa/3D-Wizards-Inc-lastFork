@@ -19,6 +19,7 @@ type Product = {
   price?: string;
   basePrice?: string;
   image: string;
+  redirect: string;
   size: { min: number; max: number };
   pickupInperson?: boolean;
 };
@@ -34,6 +35,7 @@ const products: Product[] = [
     thirdColor: [],
     price: '$25',
     image: '',
+    redirect: '',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -51,6 +53,7 @@ const products: Product[] = [
     thirdColor: [],
     price: '$25',
     image: '',
+    redirect: '',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -68,6 +71,7 @@ const products: Product[] = [
     thirdColor: ['red', 'blue'], // Array of color names
     basePrice: '$10',
     image: '',
+    redirect: '',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -85,6 +89,7 @@ const products: Product[] = [
     thirdColor: [],
     price: '$20',
     image: '',
+    redirect: '',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -100,7 +105,8 @@ const products: Product[] = [
     secondaryColor: [], // Array of color names
     thirdColor: [],
     price: '$20',
-    image: '',
+    image: '/images/Products/axolotl_pink_1.jpg',
+    redirect: 'axolotl',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -117,6 +123,7 @@ const products: Product[] = [
     thirdColor: [],
     price: '$20',
     image: '',
+    redirect: '',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -133,6 +140,7 @@ const products: Product[] = [
     thirdColor: [],
     price: '$25',
     image: '',
+    redirect: '',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -149,6 +157,7 @@ const products: Product[] = [
     thirdColor: [],
     price: '$30',
     image: '',
+    redirect: '',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -165,6 +174,7 @@ const products: Product[] = [
     thirdColor: [],
     price: '$25',
     image: '',
+    redirect: '',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -181,6 +191,7 @@ const products: Product[] = [
     thirdColor: ['red', 'blue'], // Array of color names
     price: '$20',
     image: '',
+    redirect: '',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -197,6 +208,7 @@ const products: Product[] = [
     thirdColor: ['red', 'blue', 'green'], // Array of color names
     price: '$20',
     image: '',
+    redirect: '',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -388,7 +400,9 @@ const StorePage = () => {
                 <Card>
                   <Card.Img variant="top" src={product.image} />
                   <Card.Body>
-                    <Card.Title>{product.name}</Card.Title>
+                    <Link href={`/store/${product.redirect}`} passHref>
+                      <Card.Title>{product.name}</Card.Title>
+                    </Link>
                     <Card.Text>{product.type}</Card.Text>
                     {/* for testing remove before product */}
                     <Card.Text>
