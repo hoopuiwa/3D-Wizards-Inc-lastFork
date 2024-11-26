@@ -19,7 +19,7 @@ type Product = {
   price?: string;
   basePrice?: string;
   image: string;
-  size: { min: number, max: number };
+  size: { min: number; max: number };
   pickupInperson?: boolean;
 };
 
@@ -34,7 +34,8 @@ const products: Product[] = [
     thirdColor: [],
     price: '$25',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -50,7 +51,8 @@ const products: Product[] = [
     thirdColor: [],
     price: '$25',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -66,7 +68,8 @@ const products: Product[] = [
     thirdColor: ['red', 'blue'], // Array of color names
     basePrice: '$10',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -82,7 +85,8 @@ const products: Product[] = [
     thirdColor: [],
     price: '$20',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -97,7 +101,8 @@ const products: Product[] = [
     thirdColor: [],
     price: '$20',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -112,7 +117,8 @@ const products: Product[] = [
     thirdColor: [],
     price: '$20',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -127,7 +133,8 @@ const products: Product[] = [
     thirdColor: [],
     price: '$25',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -142,7 +149,8 @@ const products: Product[] = [
     thirdColor: [],
     price: '$30',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -157,7 +165,8 @@ const products: Product[] = [
     thirdColor: [],
     price: '$25',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -172,7 +181,8 @@ const products: Product[] = [
     thirdColor: ['red', 'blue'], // Array of color names
     price: '$20',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -187,7 +197,8 @@ const products: Product[] = [
     thirdColor: ['red', 'blue', 'green'], // Array of color names
     price: '$20',
     image: '',
-    size: { // Adjustable size range
+    size: {
+      // Adjustable size range
       min: 0.5, // Minimum size
       max: 1.2, // Maximum size
     },
@@ -236,18 +247,17 @@ const StorePage = () => {
   /* allows for multiple filters */
   const displayedProducts = products.filter((product) => {
     const searchFilter = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const sizeFilter = size
-      ? parseFloat(size) >= product.size.min && parseFloat(size) <= product.size.max
-      : true;
+    const sizeFilter = size ? parseFloat(size) >= product.size.min && parseFloat(size) <= product.size.max : true;
 
-    const primaryColorFilter = selectedPrimaryColors.length === 0
-      || selectedPrimaryColors.some((color) => product.primaryColor.includes(color));
+    const primaryColorFilter =
+      selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => product.primaryColor.includes(color));
 
-    const secondaryColorFilter = selectedSecondaryColors.length === 0
-      || selectedSecondaryColors.some((color) => product.secondaryColor?.includes(color));
+    const secondaryColorFilter =
+      selectedSecondaryColors.length === 0 ||
+      selectedSecondaryColors.some((color) => product.secondaryColor?.includes(color));
 
-    const thirdColorFilter = selectedThirdColors.length === 0
-      || selectedThirdColors.some((color) => product.thirdColor?.includes(color));
+    const thirdColorFilter =
+      selectedThirdColors.length === 0 || selectedThirdColors.some((color) => product.thirdColor?.includes(color));
 
     return searchFilter && sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
   });
@@ -272,6 +282,9 @@ const StorePage = () => {
             </Link>
             <Link href="/store/ferret" passHref>
               <Button variant="link">Ferret Temp</Button>
+            </Link>
+            <Link href="/store/bengal" passHref>
+              <Button variant="link">Bengal Temp</Button>
             </Link>
           </ul>
           <h5 className="mt-4">Primary Colors</h5>
