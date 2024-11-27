@@ -261,7 +261,7 @@ const StorePage = () => {
           {/* Does nothing */}
           <h5 className="mt-4">Categories</h5>
           <ul className="list-unstyled">
-            <Link href="/store/Cart" passHref>
+            <Link href="/store/cart" passHref>
               <Button variant="link" className="d-flex align-items-center">
                 <FaShoppingCart className="me-2" />
                 Cart
