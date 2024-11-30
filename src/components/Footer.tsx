@@ -1,6 +1,7 @@
 'use client';
 
 import { Instagram } from 'react-bootstrap-icons';
+import Link from 'next/link';
 
 /** The Footer appears at the bottom of every page. Rendered by the App Layout component. */
 const Footer = () => (
@@ -10,7 +11,9 @@ const Footer = () => (
 
         <div className="col-md-4 text-center">
           <h5 className="text-uppercase">NAVIGATION</h5>
-          <p>About Us</p>
+          <p>
+            <Link href="/about" className="text-decoration-none text-reset">About Us</Link>
+          </p>
           <p>Employment</p>
           <p>Pictures</p>
         </div>
