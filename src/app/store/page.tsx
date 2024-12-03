@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
-import { FaShoppingCart } from 'react-icons';
 import Link from 'next/link';
 
 /* Product data maybe tie to db later */
@@ -284,7 +283,6 @@ const StorePage = () => {
           <ul className="list-unstyled">
             <Link href="/store/cart" passHref>
               <Button variant="link" className="d-flex align-items-center">
-                <FaShoppingCart className="me-2" />
                 Cart
               </Button>
             </Link>
