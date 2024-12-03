@@ -44,15 +44,14 @@ const TigerPage = () => {
 
   const sizeFilter = size ? parseFloat(size) >= tiger.size.min && parseFloat(size) <= tiger.size.max : true;
 
-  const primaryColorFilter =
-    selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => tiger.primaryColor.includes(color));
+  // eslint-disable-next-line max-len
+  const primaryColorFilter = selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => tiger.primaryColor.includes(color));
 
-  const secondaryColorFilter =
-    selectedSecondaryColors.length === 0 ||
-    selectedSecondaryColors.some((color) => tiger.secondaryColor?.includes(color));
+  const secondaryColorFilter = selectedSecondaryColors.length === 0
+    || selectedSecondaryColors.some((color) => tiger.secondaryColor?.includes(color));
 
-  const thirdColorFilter =
-    selectedThirdColors.length === 0 || selectedThirdColors.some((color) => tiger.thirdColor?.includes(color));
+  // eslint-disable-next-line max-len
+  const thirdColorFilter = selectedThirdColors.length === 0 || selectedThirdColors.some((color) => tiger.thirdColor?.includes(color));
 
   const displayedTiger = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
 
