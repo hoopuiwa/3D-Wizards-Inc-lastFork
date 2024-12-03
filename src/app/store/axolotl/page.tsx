@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 'use client';
 
 import React, { useState } from 'react';
@@ -44,15 +45,13 @@ const AxolotlPage = () => {
 
   const sizeFilter = size ? parseFloat(size) >= axolotl.size.min && parseFloat(size) <= axolotl.size.max : true;
 
-  const primaryColorFilter =
-    selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => axolotl.primaryColor.includes(color));
+  // eslint-disable-next-line max-len
+  const primaryColorFilter = selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => axolotl.primaryColor.includes(color));
 
-  const secondaryColorFilter =
-    selectedSecondaryColors.length === 0 ||
-    selectedSecondaryColors.some((color) => axolotl.secondaryColor?.includes(color));
+  const secondaryColorFilter = selectedSecondaryColors.length === 0
+    || selectedSecondaryColors.some((color) => axolotl.secondaryColor?.includes(color));
 
-  const thirdColorFilter =
-    selectedThirdColors.length === 0 || selectedThirdColors.some((color) => axolotl.thirdColor?.includes(color));
+  const thirdColorFilter = selectedThirdColors.length === 0 || selectedThirdColors.some((color) => axolotl.thirdColor?.includes(color));
 
   const displayedAxolotl = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
 

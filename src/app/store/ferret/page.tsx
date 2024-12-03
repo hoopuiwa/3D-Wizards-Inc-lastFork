@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Form} from 'react-bootstrap';
+import { Container, Row, Col, Card, Form } from 'react-bootstrap';
 
 /* Product data maybe tie to db later */
 type Product = {
@@ -47,17 +47,14 @@ const FerretPage = () => {
     ? parseFloat(size) >= ferret.size.min && parseFloat(size) <= ferret.size.max
     : true;
 
-  const primaryColorFilter =
-    selectedPrimaryColors.length === 0 ||
-    selectedPrimaryColors.some((color) => ferret.primaryColor.includes(color));
+  const primaryColorFilter = selectedPrimaryColors.length === 0
+    || selectedPrimaryColors.some((color) => ferret.primaryColor.includes(color));
 
-  const secondaryColorFilter =
-    selectedSecondaryColors.length === 0 ||
-    selectedSecondaryColors.some((color) => ferret.secondaryColor?.includes(color));
+  const secondaryColorFilter = selectedSecondaryColors.length === 0
+    || selectedSecondaryColors.some((color) => ferret.secondaryColor?.includes(color));
 
-  const thirdColorFilter =
-    selectedThirdColors.length === 0 ||
-    selectedThirdColors.some((color) => ferret.thirdColor?.includes(color));
+  const thirdColorFilter = selectedThirdColors.length === 0
+    || selectedThirdColors.some((color) => ferret.thirdColor?.includes(color));
 
   const displayedFerret = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
 
@@ -66,7 +63,9 @@ const FerretPage = () => {
       <Row>
         {/* Sidebar */}
         <Col md={3} className="border-end">
-          <h4>Ferret Details, Price: {ferret.price}
+          <h4>
+            Ferret Details, Price:
+            {ferret.price}
           </h4>
           <h5 className="mt-4">Primary Colors</h5>
           <Form.Check
