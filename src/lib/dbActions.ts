@@ -1,6 +1,6 @@
 'use server';
 
-import { Stuff, Condition } from '@prisma/client';
+import { Stuff, Condition, Option, Size, Color } from '@prisma/client';
 import { hash } from 'bcrypt';
 import { redirect } from 'next/navigation';
 import { prisma } from './prisma';
@@ -60,6 +60,33 @@ export async function deleteStuff(id: number) {
     where: { id },
   });
   redirect('/list');
+}
+
+/**
+ * Creates new product in the database.
+ * @param product, an object with the following properties: id, option, size, color, quantity, owner
+ */
+export async function addProduct(product: {
+  option: Option;
+  size: Size;
+  color1: Color;
+  color2: Color;
+  color3: Color;
+  quantity: number;
+  owner: string;
+}) {
+  await prisma.product.create({
+    data: {
+      option: product.option,
+      size: product.size,
+      color1: product.color1,
+      color2: product.color2,
+      color3: product.color3,
+      quantity: product.quantity,
+      owner: product.owner,
+    },
+  });
+  redirect('/store/cart');
 }
 
 /**
