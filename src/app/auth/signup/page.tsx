@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { Card, Col, Container, Button, Form, Row } from 'react-bootstrap';
 import { createUser } from '@/lib/dbActions';
-import './styles.css';  // Import the CSS file
+import './styles.css'; // Import the CSS file
 
 type SignUpForm = {
   email: string;
