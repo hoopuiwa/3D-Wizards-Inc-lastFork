@@ -32,16 +32,16 @@ const CartPage = async () => {
     where: {
       owner
     },
-    // select: {
-    //   id: true,
-    //   option: true,
-    //   size: true,
-    //   color1: true,
-    //   color2: true,
-    //   color3: true,
-    //   quantity: true,
-    //   owner: true,
-    // },
+    select: {
+      id: true,
+      option: true,
+      size: true,
+      color1: true,
+      color2: true,
+      color3: true,
+      quantity: true,
+      owner: true,
+    },
   });
   return (
     <main>

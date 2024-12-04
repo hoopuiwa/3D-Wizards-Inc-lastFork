@@ -1,4 +1,4 @@
-import { Color } from '@prisma/client';
+import { Option, Size, Color } from '@prisma/client';
 import * as Yup from 'yup';
 
 export const AddStuffSchema = Yup.object({
