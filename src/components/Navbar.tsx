@@ -48,6 +48,10 @@ const NavBar: React.FC = () => {
           <Nav>
             {session ? (
               <NavDropdown id="login-dropdown" title={currentUser}>
+                <NavDropdown.Item id="login-dropdown-account" href="/auth/account">
+                  <Lock />
+                  Account
+                </NavDropdown.Item>
                 <NavDropdown.Item id="login-dropdown-sign-out" href="/api/auth/signout">
                   <BoxArrowRight />
                   Sign Out
