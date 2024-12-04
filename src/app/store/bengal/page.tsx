@@ -16,7 +16,7 @@ type Product = {
   thirdColor?: string[];
   price?: string;
   basePrice?: string;
-  image: string[];
+  image: string;
   size: { min: number; max: number };
   pickupInperson?: boolean;
 };
@@ -29,7 +29,7 @@ const tiger: Product = {
   secondaryColor: [], // Array of color names
   thirdColor: [],
   price: '$35',
-  image: ['/images/Products/bengal_1.jpg'], // array of images depending on the color selected
+  image: '/images/Products/bengal_1.jpg', // array of images depending on the color selected
   size: {
     min: 0.5, // Minimum size
     max: 1.2, // Maximum size
@@ -42,19 +42,19 @@ const TigerPage = () => {
   const [selectedSecondaryColors, handleSecondaryColorChange] = useState<string[]>([]);
   const [selectedThirdColors, handleThirdColorChange] = useState<string[]>([]);
 
-  const sizeFilter = size ? parseFloat(size) >= tiger.size.min && parseFloat(size) <= tiger.size.max : true;
+  // const sizeFilter = size ? parseFloat(size) >= tiger.size.min && parseFloat(size) <= tiger.size.max : true;
 
-  const primaryColorFilter =
-    selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => tiger.primaryColor.includes(color));
+  // const primaryColorFilter =
+  //   selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => tiger.primaryColor.includes(color));
 
-  const secondaryColorFilter =
-    selectedSecondaryColors.length === 0 ||
-    selectedSecondaryColors.some((color) => tiger.secondaryColor?.includes(color));
+  // const secondaryColorFilter =
+  //   selectedSecondaryColors.length === 0 ||
+  //   selectedSecondaryColors.some((color) => tiger.secondaryColor?.includes(color));
 
-  const thirdColorFilter =
-    selectedThirdColors.length === 0 || selectedThirdColors.some((color) => tiger.thirdColor?.includes(color));
+  // const thirdColorFilter =
+  //   selectedThirdColors.length === 0 || selectedThirdColors.some((color) => tiger.thirdColor?.includes(color));
 
-  const displayedTiger = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
+  // const displayedTiger = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
 
   return (
     <Container fluid>

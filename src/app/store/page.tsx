@@ -262,13 +262,16 @@ const StorePage = () => {
     const sizeFilter = size ? parseFloat(size) >= product.size.min && parseFloat(size) <= product.size.max : true;
 
     // eslint-disable-next-line max-len
-    const primaryColorFilter = selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => product.primaryColor.includes(color));
+    const primaryColorFilter =
+      selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => product.primaryColor.includes(color));
 
-    const secondaryColorFilter = selectedSecondaryColors.length === 0
-      || selectedSecondaryColors.some((color) => product.secondaryColor?.includes(color));
+    const secondaryColorFilter =
+      selectedSecondaryColors.length === 0 ||
+      selectedSecondaryColors.some((color) => product.secondaryColor?.includes(color));
 
     // eslint-disable-next-line max-len
-    const thirdColorFilter = selectedThirdColors.length === 0 || selectedThirdColors.some((color) => product.thirdColor?.includes(color));
+    const thirdColorFilter =
+      selectedThirdColors.length === 0 || selectedThirdColors.some((color) => product.thirdColor?.includes(color));
 
     return searchFilter && sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
   });
@@ -295,9 +298,6 @@ const StorePage = () => {
             </Link>
             <Link href="/store/person" passHref>
               <Button variant="link">Person</Button>
-            </Link>
-            <Link href="/store/ferret" passHref>
-              <Button variant="link">Ferret Temp</Button>
             </Link>
             <Link href="/store/bengal" passHref>
               <Button variant="link">Bengal Temp</Button>
