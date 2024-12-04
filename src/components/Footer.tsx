@@ -15,10 +15,10 @@ const Footer = () => (
             <Link href="/about" className="text-decoration-none text-reset">About Us</Link>
           </p>
           <p>
-            <Link href=" " className="text-decoration-none text-reset">Employment (make page?) </Link>
+            <Link href=" " className="text-decoration-none text-reset">Employment </Link>
           </p>
           <p>
-            <Link href="/gallery" className="text-decoration-none text-reset">Pictures (same as gallery?)</Link>
+            <Link href="/gallery" className="text-decoration-none text-reset">Gallery</Link>
           </p>
         </div>
 
@@ -37,7 +37,7 @@ const Footer = () => (
 
         <div className="col-md-4 text-center">
           <h5 className="text-uppercase">CONNECT</h5>
-          <p>Sign up for the latest updates (this needed?)</p>
+          <p>Sign up for the latest updates</p>
           <form>
             <div className="input-group">
               <input
