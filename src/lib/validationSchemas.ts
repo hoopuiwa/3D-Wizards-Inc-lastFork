@@ -38,10 +38,12 @@ export const AddProductSchema = Yup.object({
 });
 
 export interface Product {
+  id: number;
   option: Option;
   size: Size;
   color1: Color;
   color2: Color;
   color3: Color;
   quantity: number;
+  owner: string;
 };

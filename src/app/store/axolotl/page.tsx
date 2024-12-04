@@ -220,7 +220,7 @@ const AxolotlPage: React.FC = () => {
             <Row className="pt-3">
               <Col>
                 <Button type="submit" variant="primary">
-                  Submit
+                  Add to Cart
                 </Button>
               </Col>
             </Row>

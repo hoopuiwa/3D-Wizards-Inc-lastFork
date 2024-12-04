@@ -32,17 +32,17 @@ const CartPage = async () => {
     where: {
       owner
     },
-    select: {
-      id: true,
-      option: true,
-      size: true,
-      color1: true,
-      color2: true,
-      color3: true,
-      quantity: true,
-      owner: true,
-    },
-  }) as Product[];
+    // select: {
+    //   id: true,
+    //   option: true,
+    //   size: true,
+    //   color1: true,
+    //   color2: true,
+    //   color3: true,
+    //   quantity: true,
+    //   owner: true,
+    // },
+  });
   return (
     <main>
       <Container id="list" fluid className="py-3">
@@ -52,7 +52,7 @@ const CartPage = async () => {
         <Row xs={1} md={2} lg={3} className="g-4">
           {product.map((product) => (
             <Col key={product.option}>
-              <CartCard product={product} />
+              <CartCard product={product as Product} />
             </Col>
           ))}
         </Row>

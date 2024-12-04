@@ -18,7 +18,9 @@ const CartCard = ({ product }: {product: Product}) => (
           Primary: {product.color1} <br/>
           Secondary: {product.color2} <br/>
           Tertiary: {product.color3} <br/>
-          Size: {product.size} {product.id} {product.owner}
+          Size: {product.size}
+          ID: {product.id}
+          owner: {product.owner}
         </Card.Text>
     </Card.Body>
   </Card>
