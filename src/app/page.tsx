@@ -6,9 +6,9 @@ import Slideshow from '../components/Slideshow';
 /** The Home page. */
 const Home = () => {
   const images = [
-    '/images/Slide_1.jpg',
-    '/images/Slide_2.jpg',
-    '/images/Slide_3.jpg', // Add your images here
+    '/images/Slide_1.JPG',
+    '/images/Slide_2.JPG',
+    '/images/Slide_3.JPG', // Add your images here
   ];
   return (
     <main>
