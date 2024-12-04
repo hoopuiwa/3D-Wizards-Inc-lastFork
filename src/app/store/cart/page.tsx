@@ -1,14 +1,10 @@
 import { getServerSession } from 'next-auth';
-import { Col, Container, Row, Table } from 'react-bootstrap';
-//import { prisma } from '@/lib/prisma';
-//import StuffItem from '@/components/StuffItem';
+import { Col, Container, Row } from 'react-bootstrap';
 import { loggedInProtectedPage } from '@/lib/page-protection';
 import authOptions from '@/lib/authOptions';
-import {Product} from '@/lib/validationSchemas';
+import { Product } from '@/lib/validationSchemas';
 import CartCard from '@/components/CartCard';
 import { prisma } from '@/lib/prisma';
-
-
 
 /** Render a list of stuff for the logged in user. */
 const CartPage = async () => {
@@ -20,17 +16,10 @@ const CartPage = async () => {
       // eslint-disable-next-line @typescript-eslint/comma-dangle
     } | null,
   );
-  /*const owner = (session && session.user && session.user.email) || '';
-  const stuff = await prisma.stuff.findMany({
+  const owner = session?.user!.email ? session.user.email : '';
+  const product: Product[] = await prisma.product.findMany({
     where: {
       owner,
-    },
-  });*/
-  // console.log(stuff);
-  const owner = session?.user!.email ? session.user.email : '';
-  const product: Product[] = await prisma.product.findMany ({
-    where: {
-      owner
     },
     select: {
       id: true,
@@ -46,20 +35,20 @@ const CartPage = async () => {
   return (
     <main>
       <Container id="list" fluid className="py-3">
-      <Row>
-        <Col>
-        <h2 className='text-center'>Cart</h2>
-        <Row xs={1} md={2} lg={3} className="g-4">
-          {product.map((product) => (
-            <Col key={product.option}>
-              <CartCard product={product as Product} />
-            </Col>
-          ))}
-        </Row>
-        </Col>
+        <Row>
+          <Col>
+            <h2 className="text-center">Cart</h2>
+            <Row xs={1} md={2} lg={3} className="g-4">
+              {product.map((item) => (
+                <Col key={item.option}>
+                  <CartCard product={item as Product} />
+                </Col>
+              ))}
+            </Row>
+          </Col>
         </Row>
       </Container>
-      </main>
+    </main>
   );
 };
 

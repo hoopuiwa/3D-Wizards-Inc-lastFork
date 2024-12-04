@@ -1,4 +1,3 @@
-import { Option, Size, Color } from '@prisma/client';
 import * as Yup from 'yup';
 
 export const AddStuffSchema = Yup.object({
@@ -30,20 +29,18 @@ export const AddProductSchema = Yup.object({
     'KNIGHT',
     'SAMURAI']).required(),
   size: Yup.string().oneOf(['x0_5', 'x1', 'x2', 'x3']).required(),
-  color1: Yup.string().oneOf(['red', 'pink', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown', 'black', 'gray', 'white']).required(),
-  color2: Yup.string().oneOf(['red', 'pink', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown', 'black', 'gray', 'white']).required(),
-  color3: Yup.string().oneOf(['red', 'pink', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown', 'black', 'gray', 'white']).required(),
+  color1: Yup.string().oneOf(['red', 'pink', 'orange', 'yellow',
+    'green', 'blue', 'purple', 'brown',
+    'black', 'gray', 'white',
+  ]).required(),
+  color2: Yup.string().oneOf(['red', 'pink', 'orange', 'yellow',
+    'green', 'blue', 'purple', 'brown',
+    'black', 'gray', 'white',
+  ]).required(),
+  color3: Yup.string().oneOf(['red', 'pink', 'orange', 'yellow',
+    'green', 'blue', 'purple', 'brown',
+    'black', 'gray', 'white',
+  ]).required(),
   quantity: Yup.number().positive().required(),
   owner: Yup.string().required(),
 });
-
-export interface Product {
-  id: number;
-  option: Option;
-  size: Size;
-  color1: Color;
-  color2: Color;
-  color3: Color;
-  quantity: number;
-  owner: string;
-};

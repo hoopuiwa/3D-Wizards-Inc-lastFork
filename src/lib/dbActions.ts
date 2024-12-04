@@ -116,5 +116,3 @@ export async function changePassword(credentials: { email: string; password: str
     },
   });
 }
-
-
