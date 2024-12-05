@@ -371,22 +371,6 @@ const StorePage = () => {
               </button>
             </div>
           </form>
-          <h5 className="mt-4">Size</h5>
-          <form>
-            <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Enter Size in range of 0.5 to 1.2"
-                value={size}
-                aria-label="Search"
-                onChange={(e) => setSize(e.target.value)}
-              />
-              <button className="btn btn-dark" type="submit" onClick={(e) => e.preventDefault()}>
-                Enter
-              </button>
-            </div>
-          </form>
         </Col>
 
         {/* Product Grid */}
