@@ -45,15 +45,15 @@ type Product = {
   pickupInperson?: boolean;
 };
 
-const axolotl: Product = {
-  name: 'Axolotl',
-  type: 'animal',
-  animal: true,
+const crystaldragon: Product = {
+  name: 'Crystal Dragon',
+  type: 'dragon',
+  animal: false,
   primaryColor: ['red', 'blue'], // Array of color names
   secondaryColor: [], // Array of color names
   thirdColor: [],
   price: '$20',
-  image: '/images/Products/axolotl_pink_1.jpg', // array of images depending on the color selected
+  image: '', // array of images depending on the color selected
   size: {
     min: 0.5, // Minimum size
     max: 1.2, // Maximum size
@@ -81,18 +81,18 @@ const CrystalDragonPage: React.FC = () => {
   // const [selectedSecondaryColors, handleSecondaryColorChange] = useState<string[]>([]);
   // const [selectedThirdColors, handleThirdColorChange] = useState<string[]>([]);
 
-  // const sizeFilter = size ? parseFloat(size) >= axolotl.size.min && parseFloat(size) <= axolotl.size.max : true;
+  // const sizeFilter = size ? parseFloat(size) >= crystaldragon.size.min && parseFloat(size) <= crystaldragon.size.max : true;
 
   // eslint-disable-next-line max-len
-  // const primaryColorFilter = selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => axolotl.primaryColor.includes(color));
+  // const primaryColorFilter = selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => crystaldragon.primaryColor.includes(color));
 
   // const secondaryColorFilter = selectedSecondaryColors.length === 0
-  //   || selectedSecondaryColors.some((color) => axolotl.secondaryColor?.includes(color));
+  //   || selectedSecondaryColors.some((color) => crystaldragon.secondaryColor?.includes(color));
 
   // const thirdColorFilter = selectedThirdColors.length === 0
-  // || selectedThirdColors.some((color) => axolotl.thirdColor?.includes(color));
+  // || selectedThirdColors.some((color) => crystaldragon.thirdColor?.includes(color));
 
-  // const displayedAxolotl = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
+  // const displayedDragon = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
 
   return (
     <Container fluid>
@@ -102,8 +102,8 @@ const CrystalDragonPage: React.FC = () => {
           <Card className="border-0">
             <Card.Img
               variant="top"
-              src={axolotl.image}
-              alt={axolotl.name}
+              src={crystaldragon.image}
+              alt={crystaldragon.name}
               className="img-fluid"
               style={{ height: '500px' }}
             />
@@ -112,8 +112,8 @@ const CrystalDragonPage: React.FC = () => {
 
         {/* Details Section */}
         <Col md={6}>
-          <h1>{axolotl.name}</h1>
-          <h2>{axolotl.price}</h2>
+          <h1>{crystaldragon.name}</h1>
+          <h2>{crystaldragon.price}</h2>
           <hr />
           <Form onSubmit={handleSubmit(onSubmit)}>
             <h5 className="mt-4">Primary Colors</h5>
