@@ -35,7 +35,7 @@ const products: Product[] = [
     thirdColor: [],
     price: '$25',
     image: '',
-    redirect: '',
+    redirect: 'crystaldragon',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
