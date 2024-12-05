@@ -218,7 +218,6 @@ const products: Product[] = [
 ];
 
 const StorePage = () => {
-  const [size, setSize] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedPrimaryColors, setSelectedPrimaryColors] = useState<string[]>([]);
   const [selectedSecondaryColors, setSelectedSecondaryColors] = useState<string[]>([]);
@@ -259,7 +258,6 @@ const StorePage = () => {
   /* allows for multiple filters */
   const displayedProducts = products.filter((product) => {
     const searchFilter = product.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const sizeFilter = size ? parseFloat(size) >= product.size.min && parseFloat(size) <= product.size.max : true;
 
     // eslint-disable-next-line max-len
     const primaryColorFilter = selectedPrimaryColors.length === 0;
@@ -272,7 +270,7 @@ const StorePage = () => {
     const thirdColorFilter = true;
     // selectedThirdColors.length === 0 || selectedThirdColors.some((color) => product.thirdColor?.includes(color));
 
-    return searchFilter && sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
+    return searchFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
   });
 
   return (
