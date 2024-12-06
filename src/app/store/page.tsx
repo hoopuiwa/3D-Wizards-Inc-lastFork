@@ -34,8 +34,26 @@ const products: Product[] = [
     secondaryColor: ['red', 'blue'], // Array of color names
     thirdColor: [],
     price: '$25',
-    image: '',
+    image: '/images/Products/crystaldragon_blackgold_1.jpg',
     redirect: 'crystaldragon',
+    size: {
+      // Adjustable size range
+      min: 0.5, // Minimum size
+      max: 1.2, // Maximum size
+    },
+    pickupInperson: true,
+  },
+  {
+    id: 1, // Needs to be diff or breaks code completely
+    name: 'Winged Crystal Dragon',
+    type: 'dragon',
+    dragon: true,
+    primaryColor: ['red', 'blue', 'green'], // Array of color names
+    secondaryColor: ['red', 'blue'], // Array of color names
+    thirdColor: [],
+    price: '$25',
+    image: '/images/Products/wingedcrystal_blueshimmer_1.jpg',
+    redirect: 'wingedcrystal',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -52,8 +70,8 @@ const products: Product[] = [
     secondaryColor: [], // Array of color names
     thirdColor: [],
     price: '$25',
-    image: '',
-    redirect: '',
+    image: '/images/Products/mechanical_dragon_blk_1.jpg',
+    redirect: 'mechdragon',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
