@@ -76,23 +76,6 @@ const CrystalDragonPage: React.FC = () => {
   if (status === 'unauthenticated') {
     redirect('/auth/signin');
   }
-  // const [size, setSize] = useState('');
-  // const [selectedPrimaryColors, handlePrimaryColorChange] = useState<string[]>([]);
-  // const [selectedSecondaryColors, handleSecondaryColorChange] = useState<string[]>([]);
-  // const [selectedThirdColors, handleThirdColorChange] = useState<string[]>([]);
-
-  // const sizeFilter = size ? parseFloat(size) >= crystaldragon.size.min && parseFloat(size) <= crystaldragon.size.max : true;
-
-  // eslint-disable-next-line max-len
-  // const primaryColorFilter = selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => crystaldragon.primaryColor.includes(color));
-
-  // const secondaryColorFilter = selectedSecondaryColors.length === 0
-  //   || selectedSecondaryColors.some((color) => crystaldragon.secondaryColor?.includes(color));
-
-  // const thirdColorFilter = selectedThirdColors.length === 0
-  // || selectedThirdColors.some((color) => crystaldragon.thirdColor?.includes(color));
-
-  // const displayedDragon = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
 
   return (
     <Container fluid>
