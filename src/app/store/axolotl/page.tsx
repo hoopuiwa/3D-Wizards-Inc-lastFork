@@ -76,23 +76,6 @@ const AxolotlPage: React.FC = () => {
   if (status === 'unauthenticated') {
     redirect('/auth/signin');
   }
-  // const [size, setSize] = useState('');
-  // const [selectedPrimaryColors, handlePrimaryColorChange] = useState<string[]>([]);
-  // const [selectedSecondaryColors, handleSecondaryColorChange] = useState<string[]>([]);
-  // const [selectedThirdColors, handleThirdColorChange] = useState<string[]>([]);
-
-  // const sizeFilter = size ? parseFloat(size) >= axolotl.size.min && parseFloat(size) <= axolotl.size.max : true;
-
-  // eslint-disable-next-line max-len
-  // const primaryColorFilter = selectedPrimaryColors.length === 0 || selectedPrimaryColors.some((color) => axolotl.primaryColor.includes(color));
-
-  // const secondaryColorFilter = selectedSecondaryColors.length === 0
-  //   || selectedSecondaryColors.some((color) => axolotl.secondaryColor?.includes(color));
-
-  // const thirdColorFilter = selectedThirdColors.length === 0
-  // || selectedThirdColors.some((color) => axolotl.thirdColor?.includes(color));
-
-  // const displayedAxolotl = sizeFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
 
   return (
     <Container fluid>
