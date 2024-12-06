@@ -52,6 +52,7 @@ enum Option {
   BABY_DRAGON
   FROG
   AXOLOTL
+  BENGAL
   GECKO
   RAT
   FERRET
