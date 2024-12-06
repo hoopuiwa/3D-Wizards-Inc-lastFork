@@ -45,22 +45,22 @@ type Product = {
   pickupInperson?: boolean;
 };
 
-const bengal: Product = {
-  name: 'Bengal',
-  type: 'animal',
-  animal: true,
+const wingedcrystal: Product = {
+  name: 'Winged Crystal Dragon',
+  type: 'dragon',
+  dragon: true,
   primaryColor: ['red', 'blue'], // Array of color names
   secondaryColor: [], // Array of color names
   thirdColor: [],
-  price: '$35',
-  image: '/images/Products/bengal_1.jpg', // array of images depending on the color selected
+  price: '$25',
+  image: '/images/Products/wingedcrystal_blueshimmer_1.jpg', // array of images depending on the color selected
   size: {
     min: 0.5, // Minimum size
     max: 1.2, // Maximum size
   },
 };
 
-const BengalPage: React.FC = () => {
+const WingedCrystalPage: React.FC = () => {
   const { data: session, status } = useSession();
   const currentUser = session?.user?.email || '';
   const {
@@ -85,8 +85,8 @@ const BengalPage: React.FC = () => {
           <Card className="border-0">
             <Card.Img
               variant="top"
-              src={bengal.image}
-              alt={bengal.name}
+              src={wingedcrystal.image}
+              alt={wingedcrystal.name}
               className="img-fluid"
               style={{ height: '500px' }}
             />
@@ -95,8 +95,8 @@ const BengalPage: React.FC = () => {
 
         {/* Details Section */}
         <Col md={6}>
-          <h1>{bengal.name}</h1>
-          <h2>{bengal.price}</h2>
+          <h1>{wingedcrystal.name}</h1>
+          <h2>{wingedcrystal.price}</h2>
           <hr />
           <Form onSubmit={handleSubmit(onSubmit)}>
             <h5 className="mt-4">Primary Colors</h5>
@@ -169,7 +169,7 @@ const BengalPage: React.FC = () => {
             </Form.Group>
             {/* Hidden inputs */}
             <input type="hidden" {...register('owner')} value={currentUser} />
-            <input type="hidden" {...register('option')} value="BENGAL" />
+            <input type="hidden" {...register('option')} value="WINGED_CRYSTAL_DRAGON" />
             <input type="hidden" {...register('quantity')} value={1} />
             <Form.Group className="form-group">
               <Row className="pt-3">
@@ -187,4 +187,4 @@ const BengalPage: React.FC = () => {
   );
 };
 
-export default BengalPage;
+export default WingedCrystalPage;

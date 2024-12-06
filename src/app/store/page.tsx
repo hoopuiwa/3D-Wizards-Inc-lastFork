@@ -34,8 +34,8 @@ const products: Product[] = [
     secondaryColor: ['red', 'blue'], // Array of color names
     thirdColor: [],
     price: '$25',
-    image: '',
-    redirect: '',
+    image: '/images/Products/crystaldragon_blackgold_1.jpg',
+    redirect: 'crystaldragon',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -44,7 +44,25 @@ const products: Product[] = [
     pickupInperson: true,
   },
   {
-    id: 2,
+    id: 2, // Needs to be diff or breaks code completely
+    name: 'Winged Crystal Dragon',
+    type: 'dragon',
+    dragon: true,
+    primaryColor: ['red', 'blue', 'green'], // Array of color names
+    secondaryColor: ['red', 'blue'], // Array of color names
+    thirdColor: [],
+    price: '$25',
+    image: '/images/Products/wingedcrystal_blueshimmer_1.jpg',
+    redirect: 'wingedcrystal',
+    size: {
+      // Adjustable size range
+      min: 0.5, // Minimum size
+      max: 1.2, // Maximum size
+    },
+    pickupInperson: true,
+  },
+  {
+    id: 3,
     name: 'Mech dragon',
     type: 'dragon',
     dragon: true,
@@ -52,8 +70,8 @@ const products: Product[] = [
     secondaryColor: [], // Array of color names
     thirdColor: [],
     price: '$25',
-    image: '',
-    redirect: '',
+    image: '/images/Products/mechanical_dragon_blk_1.jpg',
+    redirect: 'mechdragon',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -62,7 +80,7 @@ const products: Product[] = [
   },
   // add adjustable price later dont know how to make without making a new
   {
-    id: 3,
+    id: 4,
     name: 'Baby dragon',
     type: 'dragon',
     dragon: true,
@@ -80,7 +98,7 @@ const products: Product[] = [
     egg: false,
   },
   {
-    id: 4,
+    id: 5,
     name: 'Frog',
     type: 'animal',
     animal: true,
@@ -97,7 +115,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 5,
+    id: 6,
     name: 'Axolotl',
     type: 'animal',
     animal: true,
@@ -114,7 +132,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 6,
+    id: 7,
     name: 'Gecko',
     type: 'animal',
     animal: true,
@@ -131,7 +149,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 7,
+    id: 8,
     name: 'Rat',
     type: 'animal',
     animal: true,
@@ -148,7 +166,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 8,
+    id: 9,
     name: 'Ferret',
     type: 'animal',
     animal: true,
@@ -165,7 +183,24 @@ const products: Product[] = [
     },
   },
   {
-    id: 9,
+    id: 10,
+    name: 'Bengal',
+    type: 'animal',
+    animal: true,
+    primaryColor: ['red', 'blue'], // Array of color names
+    secondaryColor: [], // Array of color names
+    thirdColor: [],
+    price: '$35',
+    image: '/images/Products/bengal_1.jpg',
+    redirect: 'bengal',
+    size: {
+      // Adjustable size range
+      min: 0.5, // Minimum size
+      max: 1.2, // Maximum size
+    },
+  },
+  {
+    id: 11,
     name: 'Imperial Dragon',
     type: 'animal',
     dragon: true,
@@ -182,7 +217,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 10,
+    id: 12,
     name: 'Knight',
     type: 'animal',
     person: true,
@@ -199,7 +234,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 11,
+    id: 13,
     name: 'Samurai',
     type: 'animal',
     person: true,
