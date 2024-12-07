@@ -12,10 +12,18 @@ type SignUpForm = {
   email: string;
   password: string;
   confirmPassword: string;
+  name: string;
+  phone: string;
+  address: string;
 };
 
 const SignUp = () => {
   const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    phone: Yup.string()
+      .required('Phone number is required')
+      .matches(/^\+?[0-9]{7,15}$/, 'Phone number is invalid'),
+    address: Yup.string().required('Address is required'),
     email: Yup.string().required('Email is required').email('Email is invalid'),
     password: Yup.string()
       .required('Password is required')
@@ -37,7 +45,7 @@ const SignUp = () => {
 
   const onSubmit = async (data: SignUpForm) => {
     await createUser(data);
-    await signIn('credentials', { callbackUrl: '/account', ...data });
+    await signIn('credentials', { callbackUrl: '/add', ...data });
   };
 
   return (
@@ -49,6 +57,36 @@ const SignUp = () => {
             <Card className="card-main">
               <Card.Body>
                 <Form onSubmit={handleSubmit(onSubmit)}>
+                  <Form.Group className="form-group">
+                    <Form.Label>Name</Form.Label>
+                    <input
+                      type="text"
+                      {...register('name')}
+                      className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                    />
+                    <div className="invalid-feedback">{errors.name?.message}</div>
+                  </Form.Group>
+
+                  <Form.Group className="form-group">
+                    <Form.Label>Phone Number</Form.Label>
+                    <input
+                      type="text"
+                      {...register('phone')}
+                      className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
+                    />
+                    <div className="invalid-feedback">{errors.phone?.message}</div>
+                  </Form.Group>
+
+                  <Form.Group className="form-group">
+                    <Form.Label>Address</Form.Label>
+                    <input
+                      type="text"
+                      {...register('address')}
+                      className={`form-control ${errors.address ? 'is-invalid' : ''}`}
+                    />
+                    <div className="invalid-feedback">{errors.address?.message}</div>
+                  </Form.Group>
+
                   <Form.Group className="form-group">
                     <Form.Label>Email</Form.Label>
                     <input

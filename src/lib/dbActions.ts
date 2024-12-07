@@ -93,12 +93,22 @@ export async function addProduct(product: {
  * Creates a new user in the database.
  * @param credentials, an object with the following properties: email, password.
  */
-export async function createUser(credentials: { email: string; password: string }) {
-  const password = await hash(credentials.password, 10);
+export async function createUser(credentials: {
+  email: string;
+  password: string;
+  name: string;
+  phone: string;
+  address: string;
+}) {
+  const hashedPassword = await hash(credentials.password, 10); // Hash the password
+
   await prisma.user.create({
     data: {
       email: credentials.email,
-      password,
+      password: hashedPassword,
+      name: credentials.name, // Add the name to the database
+      phone: credentials.phone, // Add the phone to the database
+      address: credentials.address, // Add the address to the database
     },
   });
 }
