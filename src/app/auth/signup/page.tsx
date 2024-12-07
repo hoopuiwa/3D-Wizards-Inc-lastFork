@@ -44,8 +44,14 @@ const SignUp = () => {
   });
 
   const onSubmit = async (data: SignUpForm) => {
-    await createUser(data);
-    await signIn('credentials', { callbackUrl: '/add', ...data });
+    console.log('Form submitted with data:', data);
+    try {
+      await createUser(data);
+      console.log('User created successfully:', data);
+      await signIn('credentials', { callbackUrl: '/add', ...data });
+    } catch (error) {
+      console.error('Error in submission:', error);
+    }
   };
 
   return (
