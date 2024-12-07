@@ -52,6 +52,10 @@ const NavBar: React.FC = () => {
                   <Lock />
                   Account
                 </NavDropdown.Item>
+                <NavDropdown.Item id="login-dropdown-cart" href="/auth/account">
+                  <Lock />
+                  Cart
+                </NavDropdown.Item>
                 <NavDropdown.Item id="login-dropdown-sign-out" href="/api/auth/signout">
                   <BoxArrowRight />
                   Sign Out
