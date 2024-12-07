@@ -20,6 +20,9 @@ async function main() {
         email: account.email,
         password,
         role,
+        name: account.name, // Ensure this is included
+        phone: account.phone, // Ensure this is included
+        address: account.address, // Ensure this is included
       },
     });
     // console.log(`  Created user: ${user.email} with role: ${user.role}`);

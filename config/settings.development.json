@@ -1,7 +1,21 @@
 {
   "defaultAccounts": [
-    { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN" },
-    { "email": "john@foo.com", "password": "changeme" }
+    {
+      "email": "user1@example.com",
+      "password": "changeme",
+      "role": "USER",
+      "name": "User One",
+      "phone": "123-456-7890",
+      "address": "123 Main St, City, Country"
+    },
+    {
+      "email": "admin@example.com",
+      "password": "changeme",
+      "role": "ADMIN",
+      "name": "Admin User",
+      "phone": "987-654-3210",
+      "address": "456 Admin Rd, City, Country"
+    }
   ],
 
   "defaultData": [
