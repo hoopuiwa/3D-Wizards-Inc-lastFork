@@ -316,7 +316,7 @@ const StorePage = () => {
           {/* Does nothing */}
           <h5 className="mt-4">Categories</h5>
           <ul className="list-unstyled">
-            <Link href="/store/cart" passHref>
+            <Link href="/auth/cart" passHref>
               <Button variant="link" className="d-flex align-items-center">
                 Cart
               </Button>
