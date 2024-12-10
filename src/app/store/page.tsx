@@ -307,7 +307,15 @@ const StorePage = () => {
             {displayedProducts.map((product) => (
               <Col md={4} key={product.id} className="mb-4">
                 <Card>
-                  <Card.Img variant="top" src={product.image} />
+                  <Card.Img
+                    variant="top"
+                    src={product.image}
+                    style={{
+                      width: '100%', // Ensures it takes the full width of the card
+                      height: '300px', // Sets a fixed height
+                      objectFit: 'cover', // Maintains aspect ratio and fills the area
+                    }}
+                  />
                   <Card.Body>
                     <Link href={`/store/${product.redirect}`} passHref>
                       <Card.Title>{product.name}</Card.Title>
