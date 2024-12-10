@@ -89,7 +89,7 @@ const products: Product[] = [
     thirdColor: ['red', 'blue'], // Array of color names
     basePrice: '$10',
     image: '',
-    redirect: '',
+    redirect: 'babydragon',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
