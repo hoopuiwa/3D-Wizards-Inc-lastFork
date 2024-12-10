@@ -4,6 +4,9 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 const AccountPage = () => {
   // State variables for name, email, address, phone number, and edit status
@@ -12,6 +15,16 @@ const AccountPage = () => {
   const [address, setAddress] = useState('123 Main St, City, Country');
   const [phone, setPhone] = useState('(123) 456-7890');
   const [isEditing, setIsEditing] = useState(false);
+
+  const { data: session, status } = useSession();
+  // console.log('AddStuffForm', status, session);
+  const currentUser = session?.user?.email || '';
+  if (status === 'loading') {
+    return <LoadingSpinner />;
+  }
+  if (status === 'unauthenticated') {
+    redirect('/auth/signin');
+  }
 
   // Handle toggling edit mode
   const handleEdit = () => setIsEditing(true);
@@ -75,7 +88,7 @@ const AccountPage = () => {
             <input
               id="email"
               type="email"
-              value={email}
+              value={currentUser}
               onChange={(e) => setEmail(e.target.value)}
               style={{
                 width: '100%',
