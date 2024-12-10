@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import Link from 'next/link';
 
 /* Product data maybe tie to db later */
@@ -254,58 +254,10 @@ const products: Product[] = [
 
 const StorePage = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedPrimaryColors, setSelectedPrimaryColors] = useState<string[]>([]);
-  const [selectedSecondaryColors, setSelectedSecondaryColors] = useState<string[]>([]);
-  const [selectedThirdColors, setSelectedThirdColors] = useState<string[]>([]);
-  // Handle primary color checkbox toggle
-  const handlePrimaryColorChange = (color: string) => {
-    setSelectedPrimaryColors((prevColors) => {
-      if (prevColors.includes(color)) {
-        // Remove color if unchecked
-        return prevColors.filter((c) => c !== color);
-      }
-      // Add color if checked
-      return [...prevColors, color];
-    });
-  };
-
-  const handleSecondaryColorChange = (color: string) => {
-    setSelectedSecondaryColors((prevColors) => {
-      if (prevColors.includes(color)) {
-        // Remove color if unchecked
-        return prevColors.filter((c) => c !== color);
-      }
-      // Add color if checked
-      return [...prevColors, color];
-    });
-  };
-
-  const handleThirdColorChange = (color: string) => {
-    setSelectedThirdColors((prevColors) => {
-      if (prevColors.includes(color)) {
-        // Remove color if unchecked
-        return prevColors.filter((c) => c !== color);
-      }
-      // Add color if checked
-      return [...prevColors, color];
-    });
-  };
-  /* allows for multiple filters */
   const displayedProducts = products.filter((product) => {
     const searchFilter = product.name.toLowerCase().includes(searchTerm.toLowerCase());
 
-    // eslint-disable-next-line max-len
-    const primaryColorFilter = selectedPrimaryColors.length === 0;
-    // || selectedPrimaryColors.some((color) => product.primaryColor.includes(color));
-
-    const secondaryColorFilter = selectedSecondaryColors.length === 0;
-    // || selectedSecondaryColors.some((color) => product.secondaryColor?.includes(color));
-
-    // eslint-disable-next-line max-len
-    const thirdColorFilter = true;
-    // selectedThirdColors.length === 0 || selectedThirdColors.some((color) => product.thirdColor?.includes(color));
-
-    return searchFilter && primaryColorFilter && secondaryColorFilter && thirdColorFilter;
+    return searchFilter;
   });
 
   return (
@@ -314,76 +266,13 @@ const StorePage = () => {
         {/* Sidebar */}
         <Col md={3} className="border-end">
           {/* Does nothing */}
-          <h5 className="mt-4">Categories</h5>
           <ul className="list-unstyled">
             <Link href="/auth/cart" passHref>
               <Button variant="link" className="d-flex align-items-center">
                 Cart
               </Button>
             </Link>
-            {/* Link to the nested folder */}
-            <Link href="/store/dragon" passHref>
-              <Button variant="link">Dragon</Button>
-            </Link>
-            <Link href="/store/animal" passHref>
-              <Button variant="link">Animal</Button>
-            </Link>
-            <Link href="/store/person" passHref>
-              <Button variant="link">Person</Button>
-            </Link>
-            <Link href="/store/bengal" passHref>
-              <Button variant="link">Bengal Temp</Button>
-            </Link>
           </ul>
-          <h5 className="mt-4">Primary Colors</h5>
-          <Form.Check
-            label="Blue"
-            checked={selectedPrimaryColors.includes('blue')}
-            onChange={() => handlePrimaryColorChange('blue')}
-          />
-          <Form.Check
-            label="Red"
-            checked={selectedPrimaryColors.includes('red')}
-            onChange={() => handlePrimaryColorChange('red')}
-          />
-          <Form.Check
-            label="Green"
-            checked={selectedPrimaryColors.includes('green')}
-            onChange={() => handlePrimaryColorChange('green')}
-          />
-          <h5 className="mt-4">Secondary Colors</h5>
-          <Form.Check
-            label="Blue"
-            checked={selectedSecondaryColors.includes('blue')}
-            onChange={() => handleSecondaryColorChange('blue')}
-          />
-          <Form.Check
-            label="Red"
-            checked={selectedSecondaryColors.includes('red')}
-            onChange={() => handleSecondaryColorChange('red')}
-          />
-          <Form.Check
-            label="Green"
-            checked={selectedSecondaryColors.includes('green')}
-            onChange={() => handleSecondaryColorChange('green')}
-          />
-          <h5 className="mt-4">Third Colors</h5>
-          <Form.Check
-            label="Blue"
-            checked={selectedThirdColors.includes('blue')}
-            onChange={() => handleThirdColorChange('blue')}
-          />
-          <Form.Check
-            label="Red"
-            checked={selectedThirdColors.includes('red')}
-            onChange={() => handleThirdColorChange('red')}
-          />
-          <Form.Check
-            label="Green"
-            checked={selectedThirdColors.includes('green')}
-            onChange={() => handleThirdColorChange('green')}
-          />
-          {/* Search bar doesn't work */}
           <h5 className="mt-4">Search</h5>
           <form
             onSubmit={(e) => {
@@ -424,19 +313,6 @@ const StorePage = () => {
                       <Card.Title>{product.name}</Card.Title>
                     </Link>
                     <Card.Text>{product.type}</Card.Text>
-                    {/* for testing remove before product */}
-                    <Card.Text>
-                      {product.primaryColor}
-                      ,PrimaryList
-                    </Card.Text>
-                    <Card.Text>
-                      {product.secondaryColor}
-                      ,SecondaryList
-                    </Card.Text>
-                    <Card.Text>
-                      {product.thirdColor}
-                      ,ThirdList
-                    </Card.Text>
                     <Card.Text>{product.price}</Card.Text>
                   </Card.Body>
                 </Card>
