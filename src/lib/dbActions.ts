@@ -86,7 +86,7 @@ export async function addProduct(product: {
       owner: product.owner,
     },
   });
-  redirect('/store/cart');
+  redirect('/auth/cart');
 }
 
 /**

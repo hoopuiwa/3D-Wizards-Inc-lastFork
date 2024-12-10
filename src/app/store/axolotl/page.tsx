@@ -52,7 +52,7 @@ const axolotl: Product = {
   primaryColor: ['red', 'blue'], // Array of color names
   secondaryColor: [], // Array of color names
   thirdColor: [],
-  price: '$20',
+  price: '$25',
   image: '/images/Products/axolotl_pink_1.jpg', // array of images depending on the color selected
   size: {
     min: 0.5, // Minimum size
