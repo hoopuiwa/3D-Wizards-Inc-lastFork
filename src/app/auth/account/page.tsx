@@ -3,7 +3,7 @@
 
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import LoadingSpinner from '@/components/LoadingSpinner';
@@ -11,7 +11,7 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 const AccountPage = () => {
   // State variables for name, email, address, phone number, and edit status
   const [name, setName] = useState('John Doe');
-  const [email, setEmail] = useState('johndoe@example.com');
+  const [email, setEmail] = useState('');
   const [address, setAddress] = useState('123 Main St, City, Country');
   const [phone, setPhone] = useState('(123) 456-7890');
   const [isEditing, setIsEditing] = useState(false);
@@ -19,9 +19,16 @@ const AccountPage = () => {
   const { data: session, status } = useSession();
   // console.log('AddStuffForm', status, session);
   const currentUser = session?.user?.email || '';
+
+  useEffect(() => {
+    // Sync the email state with the current user's email from the session
+    setEmail(currentUser);
+  }, [currentUser]);
+
   if (status === 'loading') {
     return <LoadingSpinner />;
   }
+
   if (status === 'unauthenticated') {
     redirect('/auth/signin');
   }
@@ -33,6 +40,7 @@ const AccountPage = () => {
   const handleSave = () => {
     setIsEditing(false);
     // You could also add logic to save to a server or local storage here
+    console.log('Saved:', { name, email, address, phone });
   };
 
   return (
@@ -88,7 +96,7 @@ const AccountPage = () => {
             <input
               id="email"
               type="email"
-              value={currentUser}
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               style={{
                 width: '100%',
