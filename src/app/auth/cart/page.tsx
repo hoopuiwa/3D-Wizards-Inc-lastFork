@@ -17,7 +17,7 @@ export default async function Page() {
 
   const owner = session.user.email;
   const products = await prisma.product.findMany({
-    where: { owner },
+    where: { owner, checkedout: false },
     select: {
       id: true,
       option: true,
