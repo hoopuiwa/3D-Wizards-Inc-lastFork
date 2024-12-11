@@ -6,7 +6,6 @@ import { Product } from '@prisma/client';
 import CartCard from '@/components/CartCard';
 import { prisma } from '@/lib/prisma';
 import { useForm } from 'react-hook-form'; // For form handling
-import { yupResolver } from '@hookform/resolvers/yup'; // For validation resolver
 import { checkoutProducts } from '@/lib/dbActions'; // Import the new function
 
 const CartPage = async () => {
