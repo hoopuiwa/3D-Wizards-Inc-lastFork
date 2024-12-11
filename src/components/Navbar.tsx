@@ -3,8 +3,9 @@
 import React from 'react';
 import { useSession } from 'next-auth/react';
 import { usePathname } from 'next/navigation';
-import { Container, Nav, Navbar, NavDropdown, Image } from 'react-bootstrap';
+import { Container, Nav, Navbar, NavDropdown, Image, Button } from 'react-bootstrap';
 import { BoxArrowRight, Lock, PersonFill, PersonPlusFill } from 'react-bootstrap-icons';
+import Link from 'next/link';
 
 const NavBar: React.FC = () => {
   const { data: session } = useSession();
@@ -47,24 +48,31 @@ const NavBar: React.FC = () => {
           </Nav>
           <Nav>
             {session ? (
-              <NavDropdown id="login-dropdown" title={currentUser}>
-                <NavDropdown.Item id="login-dropdown-account" href="/auth/account">
-                  <Lock />
-                  Account
-                </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-cart" href="/auth/cart">
-                  <Lock />
-                  Cart
-                </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-sign-out" href="/api/auth/signout">
-                  <BoxArrowRight />
-                  Sign Out
-                </NavDropdown.Item>
-                <NavDropdown.Item id="login-dropdown-change-password" href="/auth/change-password">
-                  <Lock />
-                  Change Password
-                </NavDropdown.Item>
-              </NavDropdown>
+              <>
+                <NavDropdown id="login-dropdown" title={currentUser}>
+                  <NavDropdown.Item id="login-dropdown-account" href="/auth/account">
+                    <Lock />
+                    Account
+                  </NavDropdown.Item>
+                  <NavDropdown.Item id="login-dropdown-cart" href="/auth/cart">
+                    <Lock />
+                    Cart
+                  </NavDropdown.Item>
+                  <NavDropdown.Item id="login-dropdown-sign-out" href="/api/auth/signout">
+                    <BoxArrowRight />
+                    Sign Out
+                  </NavDropdown.Item>
+                  <NavDropdown.Item id="login-dropdown-change-password" href="/auth/change-password">
+                    <Lock />
+                    Change Password
+                  </NavDropdown.Item>
+                </NavDropdown>
+                <Link href="/auth/cart" passHref>
+                  <Button variant="link" className="d-flex align-items-center p-0 ms-3">
+                    <img src="/images/shoppingcartIcon.svg" alt="Cart" style={{ width: '24px', height: '24px' }} />
+                  </Button>
+                </Link>
+              </>
             ) : (
               <NavDropdown id="login-dropdown" title="Login">
                 <NavDropdown.Item id="login-dropdown-sign-in" href="/auth/signin">

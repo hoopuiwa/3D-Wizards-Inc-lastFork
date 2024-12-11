@@ -116,3 +116,20 @@ export async function changePassword(credentials: { email: string; password: str
     },
   });
 }
+
+/**
+ * Updates the 'checkedout' field to true for all products owned by the specified owner.
+ * @param owner The email of the owner whose products will be checked out.
+ */
+export async function checkoutProducts(owner: string) {
+  await prisma.product.updateMany({
+    where: {
+      owner,
+      checkedout: false, // Only update products not already checked out
+    },
+    data: {
+      checkedout: true,
+    },
+  });
+  redirect('/auth/cart'); // Redirect to the cart page after checkout
+}

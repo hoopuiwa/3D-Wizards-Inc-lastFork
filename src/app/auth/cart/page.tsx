@@ -1,26 +1,23 @@
 import { getServerSession } from 'next-auth';
-import { Col, Container, Row } from 'react-bootstrap';
-import { loggedInProtectedPage } from '@/lib/page-protection';
 import authOptions from '@/lib/authOptions';
-import { Product } from '@prisma/client';
-import CartCard from '@/components/CartCard';
 import { prisma } from '@/lib/prisma';
+import CartPage from './CartPage';
 
-/** Render a list of stuff for the logged in user. */
-const CartPage = async () => {
-  // Protect the page, only logged in users can access it.
+export default async function Page() {
   const session = await getServerSession(authOptions);
-  loggedInProtectedPage(
-    session as {
-      user: { email: string; id: string; randomKey: string };
-      // eslint-disable-next-line @typescript-eslint/comma-dangle
-    } | null,
-  );
-  const owner = session?.user!.email ? session.user.email : '';
-  const product: Product[] = await prisma.product.findMany({
-    where: {
-      owner,
-    },
+
+  if (!session?.user?.email) {
+    return {
+      redirect: {
+        destination: '/auth/signin',
+        permanent: false,
+      },
+    };
+  }
+
+  const owner = session.user.email;
+  const products = await prisma.product.findMany({
+    where: { owner, checkedout: false },
     select: {
       id: true,
       option: true,
@@ -29,27 +26,10 @@ const CartPage = async () => {
       color2: true,
       color3: true,
       quantity: true,
-      owner: true,
+      checkedout: true,
+      owner: true, // Ensure this is included
     },
   });
-  return (
-    <main>
-      <Container id="list" fluid className="py-3">
-        <Row>
-          <Col>
-            <h2 className="text-center">Cart</h2>
-            <Row xs={1} md={2} lg={3} className="g-4">
-              {product.map((item) => (
-                <Col key={item.option}>
-                  <CartCard product={item as Product} />
-                </Col>
-              ))}
-            </Row>
-          </Col>
-        </Row>
-      </Container>
-    </main>
-  );
-};
 
-export default CartPage;
+  return <CartPage products={products} />;
+}

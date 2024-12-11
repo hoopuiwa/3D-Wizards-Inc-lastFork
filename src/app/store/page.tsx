@@ -81,33 +81,15 @@ const products: Product[] = [
   // add adjustable price later dont know how to make without making a new
   {
     id: 4,
-    name: 'Baby dragon',
-    type: 'dragon',
-    dragon: true,
-    primaryColor: ['red', 'blue', 'green'], // Array of color names
-    secondaryColor: ['red', 'blue', 'green'], // Array of color names
-    thirdColor: ['red', 'blue'], // Array of color names
-    basePrice: '$10',
-    image: '',
-    redirect: '',
-    size: {
-      // Adjustable size range
-      min: 0.5, // Minimum size
-      max: 1.2, // Maximum size
-    },
-    egg: false,
-  },
-  {
-    id: 5,
     name: 'Frog',
     type: 'animal',
     animal: true,
     primaryColor: ['red', 'blue'], // Array of color names
     secondaryColor: [], // Array of color names
     thirdColor: [],
-    price: '$20',
-    image: '',
-    redirect: '',
+    price: '$10',
+    image: '/images/Products/frog_gradiant_1.jpg',
+    redirect: 'frog',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -115,7 +97,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 6,
+    id: 5,
     name: 'Axolotl',
     type: 'animal',
     animal: true,
@@ -132,7 +114,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 7,
+    id: 6,
     name: 'Gecko',
     type: 'animal',
     animal: true,
@@ -149,7 +131,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 8,
+    id: 7,
     name: 'Rat',
     type: 'animal',
     animal: true,
@@ -157,8 +139,8 @@ const products: Product[] = [
     secondaryColor: [], // Array of color names
     thirdColor: [],
     price: '$25',
-    image: '',
-    redirect: '',
+    image: '/images/Products/rat_brwnpnk_1.jpg',
+    redirect: 'rat',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -166,7 +148,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 9,
+    id: 8,
     name: 'Ferret',
     type: 'animal',
     animal: true,
@@ -183,7 +165,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 10,
+    id: 9,
     name: 'Bengal',
     type: 'animal',
     animal: true,
@@ -200,7 +182,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 11,
+    id: 10,
     name: 'Imperial Dragon',
     type: 'animal',
     dragon: true,
@@ -217,7 +199,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 12,
+    id: 11,
     name: 'Knight',
     type: 'animal',
     person: true,
@@ -234,7 +216,7 @@ const products: Product[] = [
     },
   },
   {
-    id: 13,
+    id: 12,
     name: 'Samurai',
     type: 'animal',
     person: true,
@@ -307,7 +289,15 @@ const StorePage = () => {
             {displayedProducts.map((product) => (
               <Col md={4} key={product.id} className="mb-4">
                 <Card>
-                  <Card.Img variant="top" src={product.image} />
+                  <Card.Img
+                    variant="top"
+                    src={product.image}
+                    style={{
+                      width: '100%', // Ensures it takes the full width of the card
+                      height: '300px', // Sets a fixed height
+                      objectFit: 'cover', // Maintains aspect ratio and fills the area
+                    }}
+                  />
                   <Card.Body>
                     <Link href={`/store/${product.redirect}`} passHref>
                       <Card.Title>{product.name}</Card.Title>
