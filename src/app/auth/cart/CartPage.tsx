@@ -16,10 +16,15 @@ export default function CartPage({ products }: CartPageProps) {
   const onCheckout = async () => {
     try {
       const owner = products.length > 0 ? products[0].owner : '';
-      await checkoutProducts(owner); // Ensure owner is passed
-      console.log('Checkout successful');
+      await checkoutProducts(owner); // Update the 'checkedout' field in the database
+      swal('Success', 'Your checkout is complete', 'success', {
+        timer: 2000,
+      }).then(() => {
+        window.location.href = '/auth/account'; // Redirect to the account page
+      });
     } catch (error) {
       console.error('Checkout failed', error);
+      swal('Error', 'Checkout failed. Please try again.', 'error');
     }
   };
 
