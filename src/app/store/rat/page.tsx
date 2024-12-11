@@ -45,24 +45,22 @@ type Product = {
   pickupInperson?: boolean;
 };
 
-const babydragon: Product = {
-  name: 'Baby dragon',
-  type: 'dragon',
-  dragon: true,
-  primaryColor: ['red', 'blue', 'green'], // Array of color names
-  secondaryColor: ['red', 'blue', 'green'], // Array of color names
-  thirdColor: ['red', 'blue'], // Array of color names
-  basePrice: '$10',
-  image: '',
+const rat: Product = {
+  name: 'Rat',
+  type: 'animal',
+  animal: true,
+  primaryColor: ['red', 'blue'], // Array of color names
+  secondaryColor: [], // Array of color names
+  thirdColor: [],
+  price: '$10',
+  image: '/images/Products/rat_brwnpnk_1.jpg', // array of images depending on the color selected
   size: {
-  // Adjustable size range
     min: 0.5, // Minimum size
     max: 1.2, // Maximum size
   },
-  egg: false,
 };
 
-const BabyDragonPage: React.FC = () => {
+const RatPage: React.FC = () => {
   const { data: session, status } = useSession();
   const currentUser = session?.user?.email || '';
   const {
@@ -85,20 +83,14 @@ const BabyDragonPage: React.FC = () => {
         {/* Image Section */}
         <Col md={6} className="d-flex justify-content-center align-items-center">
           <Card className="border-0">
-            <Card.Img
-              variant="top"
-              src={babydragon.image}
-              alt={babydragon.name}
-              className="img-fluid"
-              style={{ height: '500px' }}
-            />
+            <Card.Img variant="top" src={rat.image} alt={rat.name} className="img-fluid" style={{ height: '500px' }} />
           </Card>
         </Col>
 
         {/* Details Section */}
         <Col md={6}>
-          <h1>{babydragon.name}</h1>
-          <h2>{babydragon.price}</h2>
+          <h1>{rat.name}</h1>
+          <h2>{rat.price}</h2>
           <hr />
           <Form onSubmit={handleSubmit(onSubmit)}>
             <h5 className="mt-4">Primary Colors</h5>
@@ -171,7 +163,7 @@ const BabyDragonPage: React.FC = () => {
             </Form.Group>
             {/* Hidden inputs */}
             <input type="hidden" {...register('owner')} value={currentUser} />
-            <input type="hidden" {...register('option')} value="AXOLOTL" />
+            <input type="hidden" {...register('option')} value="RAT" />
             <input type="hidden" {...register('quantity')} value={1} />
             <Form.Group className="form-group">
               <Row className="pt-3">
@@ -189,4 +181,4 @@ const BabyDragonPage: React.FC = () => {
   );
 };
 
-export default BabyDragonPage;
+export default RatPage;
