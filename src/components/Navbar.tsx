@@ -69,7 +69,7 @@ const NavBar: React.FC = () => {
                 </NavDropdown>
                 <Link href="/auth/cart" passHref>
                   <Button variant="link" className="d-flex align-items-center p-0 ms-3">
-                    <img src="/images/shoppingcartIcon.png" alt="Cart" style={{ width: '24px', height: '24px' }} />
+                    <img src="/images/shoppingcartIcon.svg" alt="Cart" style={{ width: '24px', height: '24px' }} />
                   </Button>
                 </Link>
               </>
