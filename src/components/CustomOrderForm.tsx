@@ -99,9 +99,9 @@ const CustomOrderForm: React.FC = () => {
       e.preventDefault();
       if (!requestType || !requestDetails || !selectedMaterial) {
         setError('Please fill out all fields before submitting.');
-        console.log('Request Type:', requestType);
-        console.log('Request Details:', requestDetails);
-        console.log('Selected Material:', selectedMaterial);
+        setError(requestType);
+        setError(requestDetails);
+        setError(selectedMaterial);
         setSuccessMessage('');
       } else {
         setError('');
