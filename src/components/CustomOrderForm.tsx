@@ -106,7 +106,17 @@ const CustomOrderForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isFormValid) {
-      console.log({ requestType, requestDetails, selectedMaterial, materialColors });
+      const filteredMaterialColors = Object.fromEntries(
+        Object.entries(materialColors).filter(([, color]) => color),
+      );
+
+      console.log({
+        requestType,
+        requestDetails,
+        selectedMaterial,
+        materialColors: filteredMaterialColors,
+      });
+
       alert('Form submitted successfully!');
       setRequestType('');
       setRequestDetails('');
