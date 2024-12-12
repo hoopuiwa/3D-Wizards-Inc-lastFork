@@ -95,30 +95,31 @@ const CustomOrderForm: React.FC = () => {
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!requestType || !requestDetails || !selectedMaterial) {
-      setError('Please fill out all fields before submitting.');
-      // Debugging: Log the values of the fields
-      console.log('Request Type:', requestType);
-      console.log('Request Details:', requestDetails);
-      console.log('Selected Material:', selectedMaterial);
-
-      setSuccessMessage('');
-    } else {
-      setError('');
-      setSuccessMessage(
-        'Your form has been submitted. Please wait for an email with further details.',
-      );
-      console.log({ requestType, requestDetails, selectedMaterial, materialColors });
-      // Reset form fields
-      setRequestType('');
-      setRequestDetails('');
-      setSelectedMaterial('');
-      setMaterialColors({
-        'Material 1': '',
-        'Material 2': '',
-        'Material 3': '',
-      });
+    try {
+      e.preventDefault();
+      if (!requestType || !requestDetails || !selectedMaterial) {
+        setError('Please fill out all fields before submitting.');
+        console.log('Request Type:', requestType);
+        console.log('Request Details:', requestDetails);
+        console.log('Selected Material:', selectedMaterial);
+        setSuccessMessage('');
+      } else {
+        setError('');
+        setSuccessMessage(
+          'Your form has been submitted. Please wait for an email with further details.',
+        );
+        console.log({ requestType, requestDetails, selectedMaterial, materialColors });
+        setRequestType('');
+        setRequestDetails('');
+        setSelectedMaterial('');
+        setMaterialColors({
+          'Material 1': '',
+          'Material 2': '',
+          'Material 3': '',
+        });
+      }
+    } catch (error2) {
+      console.error('Error in handleSubmit:', error2);
     }
   };
 
