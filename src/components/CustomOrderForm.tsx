@@ -87,7 +87,7 @@ const CustomOrderForm: React.FC = () => {
     'Material 3': '',
   });
 
-  const isFormValid = requestType && requestDetails && selectedMaterial;
+  const isFormValid = requestType && requestDetails && materialKeys.includes(selectedMaterial as MaterialKey);
 
   const colors = [
     'red',
@@ -108,6 +108,14 @@ const CustomOrderForm: React.FC = () => {
     if (isFormValid) {
       console.log({ requestType, requestDetails, selectedMaterial, materialColors });
       alert('Form submitted successfully!');
+      setRequestType('');
+      setRequestDetails('');
+      setSelectedMaterial(''); // Reset selectedMaterial
+      setMaterialColors({
+        'Material 1': '',
+        'Material 2': '',
+        'Material 3': '',
+      });
     }
   };
 
@@ -162,7 +170,7 @@ const CustomOrderForm: React.FC = () => {
                   backgroundColor: materialColors[material] || '#f5f5f5',
                   color: materialColors[material] === 'black' ? 'white' : 'black',
                 }}
-                onClick={() => setSelectedMaterial(material)}
+                onClick={() => setSelectedMaterial(material)} // Only valid material keys are set
               >
                 {material}
               </button>
