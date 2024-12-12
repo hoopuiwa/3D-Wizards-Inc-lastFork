@@ -99,7 +99,7 @@ const WingedCrystalPage: React.FC = () => {
           <h2>{wingedcrystal.price}</h2>
           <hr />
           <Form onSubmit={handleSubmit(onSubmit)}>
-          <h5 className="mt-4">Quantity</h5>
+            <h5 className="mt-4">Quantity</h5>
             <Form.Group controlId="Quantity">
               <Form.Label>Select Quantity</Form.Label>
               <Form.Control
