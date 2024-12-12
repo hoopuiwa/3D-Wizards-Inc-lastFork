@@ -89,6 +89,20 @@ const CustomOrderForm: React.FC = () => {
 
   const isFormValid = requestType && requestDetails && selectedMaterial;
 
+  const colors = [
+    'red',
+    'pink',
+    'orange',
+    'yellow',
+    'green',
+    'blue',
+    'purple',
+    'brown',
+    'black',
+    'gray',
+    'white',
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isFormValid) {
@@ -98,6 +112,7 @@ const CustomOrderForm: React.FC = () => {
   };
 
   const handleColorChange = (material: MaterialKey, color: string) => {
+    console.log(`Changing color of ${material} to ${color}`);
     setMaterialColors((prevColors) => ({
       ...prevColors,
       [material]: color,
@@ -153,16 +168,23 @@ const CustomOrderForm: React.FC = () => {
               </button>
               <select
                 style={styles.dropdown}
-                value={materialColors[material]}
+                value={materialColors[material]} // Bind the current color for the material
                 onChange={(e) => handleColorChange(material, e.target.value)}
               >
                 <option value="">Select Color</option>
-                {['red', 'blue', 'green'].map((color) => (
+                {colors.map((color) => (
                   <option key={color} value={color}>
                     {color.charAt(0).toUpperCase() + color.slice(1)}
                   </option>
                 ))}
               </select>
+              {!materialColors[material] && (
+                <p style={styles.errorText}>
+                  Please select a color for
+                  {material}
+                  .
+                </p>
+              )}
             </div>
           ))}
         </div>
