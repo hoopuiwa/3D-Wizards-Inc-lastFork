@@ -99,6 +99,18 @@ const CrystalDragonPage: React.FC = () => {
           <h2>{crystaldragon.price}</h2>
           <hr />
           <Form onSubmit={handleSubmit(onSubmit)}>
+            <h5 className="mt-4">Quantity</h5>
+            <Form.Group controlId="Quantity">
+              <Form.Label>Select Quantity</Form.Label>
+              <Form.Control
+                type="number"
+                min="1"
+                max="100"
+                {...register('quantity')}
+                className={`form-control ${errors.quantity ? 'is-invalid' : ''}`}
+              />
+              <div className="invalid-feedback">{errors.quantity?.message}</div>
+            </Form.Group>
             <h5 className="mt-4">Primary Colors</h5>
             <Form.Group controlId="primaryColors">
               <Form.Label>Select Primary Color</Form.Label>
@@ -170,7 +182,6 @@ const CrystalDragonPage: React.FC = () => {
             {/* Hidden inputs */}
             <input type="hidden" {...register('owner')} value={currentUser} />
             <input type="hidden" {...register('option')} value="CRYSTAL_DRAGON" />
-            <input type="hidden" {...register('quantity')} value={1} />
             <Form.Group className="form-group">
               <Row className="pt-3">
                 <Col>
