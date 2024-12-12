@@ -18,6 +18,7 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   selectContainer: {
     marginBottom: '15px',
+    textAlign: 'left',
   },
   dropdown: {
     width: '100%',
@@ -65,6 +66,11 @@ const styles: { [key: string]: React.CSSProperties } = {
     backgroundColor: '#ccc',
     cursor: 'not-allowed',
   },
+  errorText: {
+    color: 'red',
+    fontSize: '14px',
+    marginTop: '5px',
+  },
 };
 
 const CustomOrderForm: React.FC = () => {
@@ -81,44 +87,13 @@ const CustomOrderForm: React.FC = () => {
     'Material 3': '',
   });
 
-  const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-
-  const colors = [
-    'red',
-    'pink',
-    'orange',
-    'yellow',
-    'green',
-    'blue',
-    'purple',
-    'brown',
-    'black',
-    'gray',
-    'white',
-  ];
-
   const isFormValid = requestType && requestDetails && selectedMaterial;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isFormValid) {
-      setError('');
-      setSuccessMessage(
-        'Your form has been submitted. Please wait for an email with further details.',
-      );
       console.log({ requestType, requestDetails, selectedMaterial, materialColors });
-      setRequestType('');
-      setRequestDetails('');
-      setSelectedMaterial('');
-      setMaterialColors({
-        'Material 1': '',
-        'Material 2': '',
-        'Material 3': '',
-      });
-    } else {
-      setError('Please fill out all fields before submitting.');
-      setSuccessMessage('');
+      alert('Form submitted successfully!');
     }
   };
 
@@ -145,6 +120,9 @@ const CustomOrderForm: React.FC = () => {
             <option value="Option 2">Option 2</option>
             <option value="Option 3">Option 3</option>
           </select>
+          {!requestType && (
+            <p style={styles.errorText}>Please select a request type.</p>
+          )}
         </div>
 
         {/* Textarea */}
@@ -154,6 +132,9 @@ const CustomOrderForm: React.FC = () => {
           value={requestDetails}
           onChange={(e) => setRequestDetails(e.target.value)}
         />
+        {!requestDetails && (
+          <p style={styles.errorText}>Please provide details for your request.</p>
+        )}
 
         {/* Material Buttons with Color Selectors */}
         <div style={styles.materialButtons}>
@@ -176,7 +157,7 @@ const CustomOrderForm: React.FC = () => {
                 onChange={(e) => handleColorChange(material, e.target.value)}
               >
                 <option value="">Select Color</option>
-                {colors.map((color) => (
+                {['red', 'blue', 'green'].map((color) => (
                   <option key={color} value={color}>
                     {color.charAt(0).toUpperCase() + color.slice(1)}
                   </option>
@@ -185,13 +166,8 @@ const CustomOrderForm: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Error Message */}
-        {error && <p style={{ color: 'red', marginBottom: '10px' }}>{error}</p>}
-
-        {/* Success Message */}
-        {successMessage && (
-          <p style={{ color: 'green', marginBottom: '10px' }}>{successMessage}</p>
+        {!selectedMaterial && (
+          <p style={styles.errorText}>Please select a material.</p>
         )}
 
         {/* Submit Button */}
