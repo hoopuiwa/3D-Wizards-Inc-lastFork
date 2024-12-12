@@ -89,43 +89,37 @@ const CustomOrderForm: React.FC = () => {
 
   const isFormValid = requestType && requestDetails && selectedMaterial;
 
-  const colors = [
-    'red',
-    'pink',
-    'orange',
-    'yellow',
-    'green',
-    'blue',
-    'purple',
-    'brown',
-    'black',
-    'gray',
-    'white',
-  ];
+  const colors = ['red', 'pink', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown', 'black', 'gray', 'white'];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isFormValid) {
-      const filteredMaterialColors = Object.fromEntries(
-        Object.entries(materialColors).filter(([, color]) => color),
-      );
-
-      console.log({
-        requestType,
-        requestDetails,
-        selectedMaterial,
-        materialColors: filteredMaterialColors,
-      });
-
-      alert('Form submitted successfully!');
-      setRequestType('');
-      setRequestDetails('');
-      setSelectedMaterial('');
-      setMaterialColors({
-        'Material 1': '',
-        'Material 2': '',
-        'Material 3': '',
-      });
+      const filteredMaterialColors = Object.fromEntries(Object.entries(materialColors).filter(([, color]) => color));
+      try {
+        // Log or handle the submitted data
+        console.log({
+          requestType,
+          requestDetails,
+          selectedMaterial,
+          materialColors: filteredMaterialColors,
+        });
+        // Provide feedback to the user
+        swal('Success', 'Form submitted successfully!', 'success', {
+          timer: 2000,
+        });
+        // Reset form state
+        setRequestType('');
+        setRequestDetails('');
+        setSelectedMaterial('');
+        setMaterialColors({
+          'Material 1': '',
+          'Material 2': '',
+          'Material 3': '',
+        });
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        swal('Error', 'Failed to submit form. Please try again.', 'error');
+      }
     }
   };
 
@@ -144,11 +138,7 @@ const CustomOrderForm: React.FC = () => {
       <form onSubmit={handleSubmit}>
         {/* Dropdown for Request Type */}
         <div style={styles.selectContainer}>
-          <select
-            style={styles.dropdown}
-            value={requestType}
-            onChange={(e) => setRequestType(e.target.value)}
-          >
+          <select style={styles.dropdown} value={requestType} onChange={(e) => setRequestType(e.target.value)}>
             <option value="">Select Request Type</option>
             <option value="Option 1">Option 1</option>
             <option value="Option 2">Option 2</option>

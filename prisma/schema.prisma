@@ -84,3 +84,13 @@ enum Color {
   gray
   white
 }
+
+model Custom_Orders {
+  id          Int    @id @default(autoincrement())
+  user        String
+  description String
+  material1   String
+  material2   String
+  material3   String
+  type        String
+}

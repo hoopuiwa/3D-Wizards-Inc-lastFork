@@ -133,3 +133,28 @@ export async function checkoutProducts(owner: string) {
   });
   redirect('/auth/cart'); // Redirect to the cart page after checkout
 }
+
+/**
+ * Creates a new custom order in the database.
+ * @param order, an object with the following properties: user, description, material1, material2, material3, type
+ */
+export async function addCustomOrder(order: {
+  user: string;
+  description: string;
+  material1: string;
+  material2: string;
+  material3: string;
+  type: string;
+}) {
+  await prisma.custom_Orders.create({
+    data: {
+      user: order.user,
+      description: order.description,
+      material1: order.material1,
+      material2: order.material2,
+      material3: order.material3,
+      type: order.type,
+    },
+  });
+  redirect('/auth/account'); // Redirect to orders page after adding
+}
