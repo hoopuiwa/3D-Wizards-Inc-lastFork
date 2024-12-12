@@ -67,7 +67,7 @@ const CustomOrderForm: React.FC = () => {
   const [requestType, setRequestType] = useState('');
   const [requestDetails, setRequestDetails] = useState('');
   const [selectedMaterial, setSelectedMaterial] = useState('');
-
+  
   const materialKeys = ['Material 1', 'Material 2', 'Material 3'] as const;
   type MaterialKey = (typeof materialKeys)[number];
 
@@ -159,6 +159,7 @@ const CustomOrderForm: React.FC = () => {
                 style={{
                   ...styles.materialButton,
                   backgroundColor: materialColors[material] || '#f5f5f5',
+                  color: materialColors[material] === 'black' ? 'white' : 'black',
                 }}
                 onClick={() => setSelectedMaterial(material)}
               >
