@@ -97,11 +97,8 @@ const CustomOrderForm: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     try {
       e.preventDefault();
-      if (!requestType || !requestDetails || !selectedMaterial) {
+      if (requestType || requestDetails || selectedMaterial) {
         setError('Please fill out all fields before submitting.');
-        setError(requestType);
-        setError(requestDetails);
-        setError(selectedMaterial);
         setSuccessMessage('');
       } else {
         setError('');
