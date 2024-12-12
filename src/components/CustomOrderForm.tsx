@@ -87,7 +87,7 @@ const CustomOrderForm: React.FC = () => {
     'Material 3': '',
   });
 
-  const isFormValid = requestType && requestDetails && materialKeys.includes(selectedMaterial as MaterialKey);
+  const isFormValid = requestType && requestDetails && selectedMaterial;
 
   const colors = [
     'red',
@@ -110,7 +110,7 @@ const CustomOrderForm: React.FC = () => {
       alert('Form submitted successfully!');
       setRequestType('');
       setRequestDetails('');
-      setSelectedMaterial(''); // Reset selectedMaterial
+      setSelectedMaterial('');
       setMaterialColors({
         'Material 1': '',
         'Material 2': '',
@@ -170,13 +170,13 @@ const CustomOrderForm: React.FC = () => {
                   backgroundColor: materialColors[material] || '#f5f5f5',
                   color: materialColors[material] === 'black' ? 'white' : 'black',
                 }}
-                onClick={() => setSelectedMaterial(material)} // Only valid material keys are set
+                onClick={() => setSelectedMaterial(material)}
               >
                 {material}
               </button>
               <select
                 style={styles.dropdown}
-                value={materialColors[material]} // Bind the current color for the material
+                value={materialColors[material]}
                 onChange={(e) => handleColorChange(material, e.target.value)}
               >
                 <option value="">Select Color</option>
