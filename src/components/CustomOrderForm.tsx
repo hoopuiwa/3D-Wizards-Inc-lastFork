@@ -25,6 +25,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontSize: '18px',
     borderRadius: '6px',
     border: '1px solid #ccc',
+    marginTop: '10px',
   },
   textarea: {
     width: '100%',
@@ -38,7 +39,8 @@ const styles: { [key: string]: React.CSSProperties } = {
   },
   materialButtons: {
     display: 'flex',
-    justifyContent: 'space-between',
+    flexDirection: 'column',
+    gap: '15px',
     marginBottom: '15px',
   },
   materialButton: {
@@ -47,8 +49,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     border: '1px solid #ccc',
     borderRadius: '6px',
     cursor: 'pointer',
-    flex: 1,
-    margin: '0 5px',
+    marginBottom: '5px',
   },
   submitButton: {
     width: '100%',
@@ -66,7 +67,11 @@ const CustomOrderForm: React.FC = () => {
   const [requestType, setRequestType] = useState('');
   const [requestDetails, setRequestDetails] = useState('');
   const [selectedMaterial, setSelectedMaterial] = useState('');
-  const [selectedColor, setSelectedColor] = useState('');
+  const [materialColors, setMaterialColors] = useState({
+    'Material 1': '',
+    'Material 2': '',
+    'Material 3': '',
+  });
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -94,13 +99,24 @@ const CustomOrderForm: React.FC = () => {
       setSuccessMessage(
         'Your form has been submitted. Please wait for an email with further details.',
       );
-      console.log({ requestType, requestDetails, selectedMaterial });
+      console.log({ requestType, requestDetails, selectedMaterial, materialColors });
       // Reset form fields
       setRequestType('');
       setRequestDetails('');
       setSelectedMaterial('');
-      setSelectedColor('');
+      setMaterialColors({
+        'Material 1': '',
+        'Material 2': '',
+        'Material 3': '',
+      });
     }
+  };
+
+  const handleColorChange = (material: string, color: string) => {
+    setMaterialColors((prevColors) => ({
+      ...prevColors,
+      [material]: color,
+    }));
   };
 
   return (
@@ -121,22 +137,6 @@ const CustomOrderForm: React.FC = () => {
           </select>
         </div>
 
-        {/* Dropdown for Color Selection */}
-        <div style={styles.selectContainer}>
-          <select
-            style={styles.dropdown}
-            value={selectedColor}
-            onChange={(e) => setSelectedColor(e.target.value)}
-          >
-            <option value="">Select Button Color</option>
-            {colors.map((color) => (
-              <option key={color} value={color}>
-                {color.charAt(0).toUpperCase() + color.slice(1)}
-              </option>
-            ))}
-          </select>
-        </div>
-
         {/* Textarea */}
         <textarea
           style={styles.textarea}
@@ -145,38 +145,34 @@ const CustomOrderForm: React.FC = () => {
           onChange={(e) => setRequestDetails(e.target.value)}
         />
 
-        {/* Material Buttons */}
+        {/* Material Buttons with Color Selectors */}
         <div style={styles.materialButtons}>
-          <button
-            type="button"
-            style={{
-              ...styles.materialButton,
-              backgroundColor: selectedMaterial === 'Material 1' ? selectedColor : '',
-            }}
-            onClick={() => setSelectedMaterial('Material 1')}
-          >
-            Material 1
-          </button>
-          <button
-            type="button"
-            style={{
-              ...styles.materialButton,
-              backgroundColor: selectedMaterial === 'Material 2' ? selectedColor : '',
-            }}
-            onClick={() => setSelectedMaterial('Material 2')}
-          >
-            Material 2
-          </button>
-          <button
-            type="button"
-            style={{
-              ...styles.materialButton,
-              backgroundColor: selectedMaterial === 'Material 3' ? selectedColor : '',
-            }}
-            onClick={() => setSelectedMaterial('Material 3')}
-          >
-            Material 3
-          </button>
+          {Object.keys(materialColors).map((material) => (
+            <div key={material}>
+              <button
+                type="button"
+                style={{
+                  ...styles.materialButton,
+                  backgroundColor: materialColors[material] || '#f5f5f5',
+                }}
+                onClick={() => setSelectedMaterial(material)}
+              >
+                {material}
+              </button>
+              <select
+                style={styles.dropdown}
+                value={materialColors[material]}
+                onChange={(e) => handleColorChange(material, e.target.value)}
+              >
+                <option value="">Select Color</option>
+                {colors.map((color) => (
+                  <option key={color} value={color}>
+                    {color.charAt(0).toUpperCase() + color.slice(1)}
+                  </option>
+                ))}
+              </select>
+            </div>
+          ))}
         </div>
 
         {/* Error Message */}
