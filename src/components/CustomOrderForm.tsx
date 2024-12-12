@@ -98,12 +98,12 @@ const CustomOrderForm: React.FC = () => {
     e.preventDefault();
 
     const isValidCombination = (() => {
-      if (!selectedMaterials.includes('Option 1')) return false;
+      if (!selectedMaterials.includes('Material 1')) return false;
       const selectedCount = selectedMaterials.length;
       if (selectedCount === 1) return true;
-      if (selectedCount === 2 && selectedMaterials.includes('Option 2')) return true;
+      if (selectedCount === 2 && selectedMaterials.includes('Material 2')) return true;
       if (
-        selectedCount === 3 && selectedMaterials.includes('Option 2') && selectedMaterials.includes('Option 3')
+        selectedCount === 3 && selectedMaterials.includes('Material 1') && selectedMaterials.includes('Material 3')
       ) {
         return true;
       }
