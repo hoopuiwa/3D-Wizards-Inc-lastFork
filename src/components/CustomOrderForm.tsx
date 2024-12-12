@@ -135,6 +135,7 @@ const CustomOrderForm: React.FC = () => {
       ...prevColors,
       [material]: color,
     }));
+    setSelectedMaterial(material);
   };
 
   return (
