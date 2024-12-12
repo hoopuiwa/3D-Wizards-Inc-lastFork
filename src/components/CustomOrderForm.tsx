@@ -77,7 +77,11 @@ const CustomOrderForm: React.FC = () => {
   const [requestType, setRequestType] = useState('');
   const [requestDetails, setRequestDetails] = useState('');
   const [selectedMaterial, setSelectedMaterial] = useState('');
-  const [materialColors, setMaterialColors] = useState({
+
+  const materialKeys = ['Material 1', 'Material 2', 'Material 3'] as const;
+  type MaterialKey = (typeof materialKeys)[number];
+
+  const [materialColors, setMaterialColors] = useState<Record<MaterialKey, string>>({
     'Material 1': '',
     'Material 2': '',
     'Material 3': '',
@@ -125,19 +129,19 @@ const CustomOrderForm: React.FC = () => {
     }
   };
 
-  const handleColorChange = (material: string, color: string) => {
+  const handleColorChange = (material: MaterialKey, color: string) => {
     console.log(`Changing color of ${material} to ${color}`);
     setMaterialColors((prevColors) => ({
       ...prevColors,
       [material]: color,
     }));
-    setSelectedMaterial(material);
   };
 
   return (
     <div style={styles.container}>
       <h2 style={styles.header}>Custom Request:</h2>
       <form onSubmit={handleSubmit}>
+        {/* Dropdown for Request Type */}
         <div style={styles.selectContainer}>
           <select
             style={styles.dropdown}
@@ -154,6 +158,7 @@ const CustomOrderForm: React.FC = () => {
           )}
         </div>
 
+        {/* Textarea */}
         <textarea
           style={styles.textarea}
           placeholder="Your request here"
@@ -164,99 +169,48 @@ const CustomOrderForm: React.FC = () => {
           <p style={styles.errorText}>Please provide details for your request.</p>
         )}
 
+        {/* Material Buttons with Color Selectors */}
         <div style={styles.materialButtons}>
-          <div>
-            <button
-              type="button"
-              style={{
-                ...styles.materialButton,
-                backgroundColor: materialColors['Material 1'] || '#f5f5f5',
-                color: materialColors['Material 1'] === 'black' ? 'white' : 'black',
-              }}
-              onClick={() => setSelectedMaterial('Material 1')}
-            >
-              Material 1
-            </button>
-            <select
-              style={styles.dropdown}
-              value={materialColors['Material 1']}
-              onChange={(e) => handleColorChange('Material 1', e.target.value)}
-            >
-              <option value="">Select Color</option>
-              {colors.map((color) => (
-                <option key={color} value={color}>
-                  {color.charAt(0).toUpperCase() + color.slice(1)}
-                </option>
-              ))}
-            </select>
-            {!materialColors['Material 1'] && (
-              <p style={styles.errorText}>Please select a color for Material 1.</p>
-            )}
-          </div>
-
-          <div>
-            <button
-              type="button"
-              style={{
-                ...styles.materialButton,
-                backgroundColor: materialColors['Material 2'] || '#f5f5f5',
-                color: materialColors['Material 2'] === 'black' ? 'white' : 'black',
-              }}
-              onClick={() => setSelectedMaterial('Material 2')}
-            >
-              Material 2
-            </button>
-            <select
-              style={styles.dropdown}
-              value={materialColors['Material 2']}
-              onChange={(e) => handleColorChange('Material 2', e.target.value)}
-            >
-              <option value="">Select Color</option>
-              {colors.map((color) => (
-                <option key={color} value={color}>
-                  {color.charAt(0).toUpperCase() + color.slice(1)}
-                </option>
-              ))}
-            </select>
-            {!materialColors['Material 2'] && (
-              <p style={styles.errorText}>Please select a color for Material 2.</p>
-            )}
-          </div>
-
-          <div>
-            <button
-              type="button"
-              style={{
-                ...styles.materialButton,
-                backgroundColor: materialColors['Material 3'] || '#f5f5f5',
-                color: materialColors['Material 3'] === 'black' ? 'white' : 'black',
-              }}
-              onClick={() => setSelectedMaterial('Material 3')}
-            >
-              Material 3
-            </button>
-            <select
-              style={styles.dropdown}
-              value={materialColors['Material 3']}
-              onChange={(e) => handleColorChange('Material 3', e.target.value)}
-            >
-              <option value="">Select Color</option>
-              {colors.map((color) => (
-                <option key={color} value={color}>
-                  {color.charAt(0).toUpperCase() + color.slice(1)}
-                </option>
-              ))}
-            </select>
-            {!materialColors['Material 3'] && (
-              <p style={styles.errorText}>Please select a color for Material 3.</p>
-            )}
-          </div>
+          {materialKeys.map((material) => (
+            <div key={material}>
+              <button
+                type="button"
+                style={{
+                  ...styles.materialButton,
+                  backgroundColor: materialColors[material] || '#f5f5f5',
+                  color: materialColors[material] === 'black' ? 'white' : 'black',
+                }}
+                onClick={() => setSelectedMaterial(material)}
+              >
+                {material}
+              </button>
+              <select
+                style={styles.dropdown}
+                value={materialColors[material]}
+                onChange={(e) => handleColorChange(material, e.target.value)}
+              >
+                <option value="">Select Color</option>
+                {colors.map((color) => (
+                  <option key={color} value={color}>
+                    {color.charAt(0).toUpperCase() + color.slice(1)}
+                  </option>
+                ))}
+              </select>
+              {!materialColors[material] && (
+                <p style={styles.errorText}>
+                  Please select a color for
+                  {material}
+                  .
+                </p>
+              )}
+            </div>
+          ))}
         </div>
-
         {!selectedMaterial && (
           <p style={styles.errorText}>Please select a material.</p>
         )}
 
+        {/* Submit Button */}
         <button
           type="submit"
           style={{
