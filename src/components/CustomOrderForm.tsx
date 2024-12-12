@@ -46,7 +46,6 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontSize: '16px',
     border: '1px solid #ccc',
     borderRadius: '6px',
-    backgroundColor: '#f5f5f5',
     cursor: 'pointer',
     flex: 1,
     margin: '0 5px',
@@ -67,8 +66,23 @@ const CustomOrderForm: React.FC = () => {
   const [requestType, setRequestType] = useState('');
   const [requestDetails, setRequestDetails] = useState('');
   const [selectedMaterial, setSelectedMaterial] = useState('');
+  const [selectedColor, setSelectedColor] = useState('');
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+
+  const colors = [
+    'red',
+    'pink',
+    'orange',
+    'yellow',
+    'green',
+    'blue',
+    'purple',
+    'brown',
+    'black',
+    'gray',
+    'white',
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,6 +99,7 @@ const CustomOrderForm: React.FC = () => {
       setRequestType('');
       setRequestDetails('');
       setSelectedMaterial('');
+      setSelectedColor('');
     }
   };
 
@@ -92,7 +107,7 @@ const CustomOrderForm: React.FC = () => {
     <div style={styles.container}>
       <h2 style={styles.header}>Custom Request:</h2>
       <form onSubmit={handleSubmit}>
-        {/* Dropdown */}
+        {/* Dropdown for Request Type */}
         <div style={styles.selectContainer}>
           <select
             style={styles.dropdown}
@@ -103,6 +118,22 @@ const CustomOrderForm: React.FC = () => {
             <option value="Option 1">Option 1</option>
             <option value="Option 2">Option 2</option>
             <option value="Option 3">Option 3</option>
+          </select>
+        </div>
+
+        {/* Dropdown for Color Selection */}
+        <div style={styles.selectContainer}>
+          <select
+            style={styles.dropdown}
+            value={selectedColor}
+            onChange={(e) => setSelectedColor(e.target.value)}
+          >
+            <option value="">Select Button Color</option>
+            {colors.map((color) => (
+              <option key={color} value={color}>
+                {color.charAt(0).toUpperCase() + color.slice(1)}
+              </option>
+            ))}
           </select>
         </div>
 
@@ -120,7 +151,7 @@ const CustomOrderForm: React.FC = () => {
             type="button"
             style={{
               ...styles.materialButton,
-              backgroundColor: selectedMaterial === 'Material 1' ? '#cce5ff' : '',
+              backgroundColor: selectedMaterial === 'Material 1' ? selectedColor : '',
             }}
             onClick={() => setSelectedMaterial('Material 1')}
           >
@@ -130,7 +161,7 @@ const CustomOrderForm: React.FC = () => {
             type="button"
             style={{
               ...styles.materialButton,
-              backgroundColor: selectedMaterial === 'Material 2' ? '#cce5ff' : '',
+              backgroundColor: selectedMaterial === 'Material 2' ? selectedColor : '',
             }}
             onClick={() => setSelectedMaterial('Material 2')}
           >
@@ -140,7 +171,7 @@ const CustomOrderForm: React.FC = () => {
             type="button"
             style={{
               ...styles.materialButton,
-              backgroundColor: selectedMaterial === 'Material 3' ? '#cce5ff' : '',
+              backgroundColor: selectedMaterial === 'Material 3' ? selectedColor : '',
             }}
             onClick={() => setSelectedMaterial('Material 3')}
           >
