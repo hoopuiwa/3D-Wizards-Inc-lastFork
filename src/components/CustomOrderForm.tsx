@@ -87,7 +87,7 @@ const CustomOrderForm: React.FC = () => {
     'Material 3': '',
   });
 
-  const isFormValid = requestType && requestDetails && selectedMaterial;
+  const isFormValid = requestType && requestDetails && Object.values(materialColors).every((color) => color);
 
   const colors = [
     'red',
@@ -133,7 +133,7 @@ const CustomOrderForm: React.FC = () => {
     console.log(`Changing color of ${material} to ${color}`);
     setMaterialColors((prevColors) => ({
       ...prevColors,
-      [material]: color,
+      [material]: color || prevColors[material], // Prevent unselecting a color
     }));
     setSelectedMaterial(material);
   };
@@ -154,6 +154,9 @@ const CustomOrderForm: React.FC = () => {
             <option value="Option 2">Option 2</option>
             <option value="Option 3">Option 3</option>
           </select>
+          {!requestType && (
+            <p style={styles.errorText}>Please select a request type.</p>
+          )}
         </div>
 
         {/* Textarea */}
@@ -163,6 +166,9 @@ const CustomOrderForm: React.FC = () => {
           value={requestDetails}
           onChange={(e) => setRequestDetails(e.target.value)}
         />
+        {!requestDetails && (
+          <p style={styles.errorText}>Please provide details for your request.</p>
+        )}
 
         {/* Material Buttons with Color Selectors */}
         <div style={styles.materialButtons}>
@@ -191,9 +197,20 @@ const CustomOrderForm: React.FC = () => {
                   </option>
                 ))}
               </select>
+              {!materialColors[material] && (
+                <p style={styles.errorText}>
+                  Please select a color for
+                  {material}
+                  .
+                </p>
+              )}
             </div>
           ))}
         </div>
+
+        {!selectedMaterial && (
+          <p style={styles.errorText}>Please select a material.</p>
+        )}
 
         {/* Submit Button */}
         <button
