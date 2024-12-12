@@ -61,6 +61,10 @@ const styles: { [key: string]: React.CSSProperties } = {
     color: 'white',
     cursor: 'pointer',
   },
+  disabledButton: {
+    backgroundColor: '#ccc',
+    cursor: 'not-allowed',
+  },
 };
 
 const CustomOrderForm: React.FC = () => {
@@ -94,29 +98,27 @@ const CustomOrderForm: React.FC = () => {
     'white',
   ];
 
+  const isFormValid = requestType && requestDetails && selectedMaterial;
+
   const handleSubmit = (e: React.FormEvent) => {
-    try {
-      e.preventDefault();
-      if (requestType || requestDetails || selectedMaterial) {
-        setError('Please fill out all fields before submitting.');
-        setSuccessMessage('');
-      } else {
-        setError('');
-        setSuccessMessage(
-          'Your form has been submitted. Please wait for an email with further details.',
-        );
-        console.log({ requestType, requestDetails, selectedMaterial, materialColors });
-        setRequestType('');
-        setRequestDetails('');
-        setSelectedMaterial('');
-        setMaterialColors({
-          'Material 1': '',
-          'Material 2': '',
-          'Material 3': '',
-        });
-      }
-    } catch (error2) {
-      console.error('Error in handleSubmit:', error2);
+    e.preventDefault();
+    if (isFormValid) {
+      setError('');
+      setSuccessMessage(
+        'Your form has been submitted. Please wait for an email with further details.',
+      );
+      console.log({ requestType, requestDetails, selectedMaterial, materialColors });
+      setRequestType('');
+      setRequestDetails('');
+      setSelectedMaterial('');
+      setMaterialColors({
+        'Material 1': '',
+        'Material 2': '',
+        'Material 3': '',
+      });
+    } else {
+      setError('Please fill out all fields before submitting.');
+      setSuccessMessage('');
     }
   };
 
@@ -193,7 +195,14 @@ const CustomOrderForm: React.FC = () => {
         )}
 
         {/* Submit Button */}
-        <button type="submit" style={styles.submitButton}>
+        <button
+          type="submit"
+          style={{
+            ...styles.submitButton,
+            ...(isFormValid ? {} : styles.disabledButton),
+          }}
+          disabled={!isFormValid}
+        >
           Submit
         </button>
       </form>
