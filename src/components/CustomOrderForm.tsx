@@ -66,7 +66,7 @@ const styles: { [key: string]: React.CSSProperties } = {
 const CustomOrderForm: React.FC = () => {
   const [requestType, setRequestType] = useState('');
   const [requestDetails, setRequestDetails] = useState('');
-  const [selectedMaterials, setSelectedMaterials] = useState<string[]>([]);
+  const [selectedMaterial, setSelectedMaterial] = useState('');
 
   const materialKeys = ['Material 1', 'Material 2', 'Material 3'] as const;
   type MaterialKey = (typeof materialKeys)[number];
@@ -96,51 +96,25 @@ const CustomOrderForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Ensure Material 1 is selected and validate combinations
-    const isValidCombination = (() => {
-      if (!selectedMaterials.includes('Material 1')) return false; // Material 1 must always be selected
-      const selectedCount = selectedMaterials.length;
-
-      // Valid combinations: Only Material 1, Material 1 + Material 2, or all three
-      if (selectedCount === 1) return true;
-      if (selectedCount === 2 && selectedMaterials.includes('Material 2')) return true;
-      if (
-        selectedCount === 3 && selectedMaterials.includes('Material 2') && selectedMaterials.includes('Material 3')
-      ) {
-        return true;
-      }
-      return false;
-    })();
-      // Check if the form passes validation
-    if (!isValidCombination) {
-      setError('Please select a valid combination of materials.');
+    if (!requestType || !requestDetails || !selectedMaterial) {
+      setError('Please fill out all fields before submitting.');
       setSuccessMessage('');
-      return;
+    } else {
+      setError('');
+      setSuccessMessage(
+        'Your form has been submitted. Please wait for an email with further details.',
+      );
+      console.log({ requestType, requestDetails, selectedMaterial, materialColors });
+      // Reset form fields
+      setRequestType('');
+      setRequestDetails('');
+      setSelectedMaterial('');
+      setMaterialColors({
+        'Material 1': '',
+        'Material 2': '',
+        'Material 3': '',
+      });
     }
-
-    if (!requestDetails.trim()) {
-      setError('Request details cannot be empty.');
-      setSuccessMessage('');
-      return;
-    }
-
-    // If validation passes
-    setError('');
-    setSuccessMessage(
-      'Your form has been submitted. Please wait for an email with further details.',
-    );
-    console.log({ requestType, requestDetails, selectedMaterials, materialColors });
-
-    // Reset form fields
-    setRequestType('');
-    setRequestDetails('');
-    setSelectedMaterials([]);
-    setMaterialColors({
-      'Material 1': '',
-      'Material 2': '',
-      'Material 3': '',
-    });
   };
 
   const handleColorChange = (material: MaterialKey, color: string) => {
@@ -148,17 +122,6 @@ const CustomOrderForm: React.FC = () => {
       ...prevColors,
       [material]: color,
     }));
-  };
-
-  const handleMaterialSelection = (material: string) => {
-    setSelectedMaterials((prev) => {
-      if (prev.includes(material)) {
-        // Deselect if already selected
-        return prev.filter((m) => m !== material);
-      }
-      // Add to selection otherwise
-      return [...prev, material];
-    });
   };
 
   return (
@@ -198,7 +161,7 @@ const CustomOrderForm: React.FC = () => {
                   backgroundColor: materialColors[material] || '#f5f5f5',
                   color: materialColors[material] === 'black' ? 'white' : 'black',
                 }}
-                onClick={() => handleMaterialSelection(material)}
+                onClick={() => setSelectedMaterial(material)}
               >
                 {material}
               </button>
