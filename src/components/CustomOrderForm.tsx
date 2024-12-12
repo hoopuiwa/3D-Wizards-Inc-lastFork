@@ -67,11 +67,16 @@ const CustomOrderForm: React.FC = () => {
   const [requestType, setRequestType] = useState('');
   const [requestDetails, setRequestDetails] = useState('');
   const [selectedMaterial, setSelectedMaterial] = useState('');
-  const [materialColors, setMaterialColors] = useState({
+  
+  const materialKeys = ['Material 1', 'Material 2', 'Material 3'] as const;
+  type MaterialKey = (typeof materialKeys)[number];
+
+  const [materialColors, setMaterialColors] = useState<Record<MaterialKey, string>>({
     'Material 1': '',
     'Material 2': '',
     'Material 3': '',
   });
+
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
@@ -112,7 +117,7 @@ const CustomOrderForm: React.FC = () => {
     }
   };
 
-  const handleColorChange = (material: string, color: string) => {
+  const handleColorChange = (material: MaterialKey, color: string) => {
     setMaterialColors((prevColors) => ({
       ...prevColors,
       [material]: color,
@@ -147,7 +152,7 @@ const CustomOrderForm: React.FC = () => {
 
         {/* Material Buttons with Color Selectors */}
         <div style={styles.materialButtons}>
-          {Object.keys(materialColors).map((material) => (
+          {materialKeys.map((material) => (
             <div key={material}>
               <button
                 type="button"
