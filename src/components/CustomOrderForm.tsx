@@ -87,7 +87,7 @@ const CustomOrderForm: React.FC = () => {
     'Material 3': '',
   });
 
-  const isFormValid = requestType && requestDetails && Object.values(materialColors).every((color) => color);
+  const isFormValid = requestType && requestDetails && selectedMaterial;
 
   const colors = [
     'red',
