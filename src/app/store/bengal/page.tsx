@@ -182,7 +182,6 @@ const BengalPage: React.FC = () => {
             {/* Hidden inputs */}
             <input type="hidden" {...register('owner')} value={currentUser} />
             <input type="hidden" {...register('option')} value="BENGAL" />
-            <input type="hidden" {...register('quantity')} value={1} />
             <Form.Group className="form-group">
               <Row className="pt-3">
                 <Col>
