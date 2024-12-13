@@ -156,16 +156,16 @@ const CustomOrderForm: React.FC = () => {
         <div style={styles.selectContainer}>
           <select style={styles.dropdown} value={requestType} onChange={(e) => setRequestType(e.target.value)}>
             <option value="">Select Request Type</option>
-            <option value="Option 1">Option 1</option>
-            <option value="Option 2">Option 2</option>
-            <option value="Option 3">Option 3</option>
+            <option value="Option 1">Modified version of regularly produced item.</option>
+            <option value="Option 2">You have a 3D model to print</option>
+            <option value="Option 3">Completely custom 3D design and print</option>
           </select>
         </div>
 
         {/* Textarea */}
         <textarea
           style={styles.textarea}
-          placeholder="Your request here"
+          placeholder="Your request here, please specify how materials should be used"
           value={requestDetails}
           onChange={(e) => setRequestDetails(e.target.value)}
         />
