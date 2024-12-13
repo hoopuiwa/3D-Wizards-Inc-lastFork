@@ -1,5 +1,6 @@
 'use client';
 
+import swal from 'sweetalert';
 import React, { useState } from 'react';
 
 const styles: { [key: string]: React.CSSProperties } = {
