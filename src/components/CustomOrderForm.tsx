@@ -1,7 +1,9 @@
 'use client';
 
-import swal from 'sweetalert';
 import React, { useState } from 'react';
+import swal from 'sweetalert';
+import { useSession } from 'next-auth/react';
+import { addCustomOrder } from '@/lib/dbActions';
 
 const styles: { [key: string]: React.CSSProperties } = {
   container: {
@@ -92,22 +94,35 @@ const CustomOrderForm: React.FC = () => {
 
   const colors = ['red', 'pink', 'orange', 'yellow', 'green', 'blue', 'purple', 'brown', 'black', 'gray', 'white'];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Get current user session
+  const { data: session } = useSession();
+  const currentUser = session?.user?.email;
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!currentUser) {
+      swal('Error', 'You must be logged in to submit a custom order.', 'error');
+      return;
+    }
+
     if (isFormValid) {
       const filteredMaterialColors = Object.fromEntries(Object.entries(materialColors).filter(([, color]) => color));
+
       try {
-        // Log or handle the submitted data
-        console.log({
-          requestType,
-          requestDetails,
-          selectedMaterial,
-          materialColors: filteredMaterialColors,
+        // Call addCustomOrder with the required data
+        await addCustomOrder({
+          user: currentUser,
+          description: requestDetails,
+          material1: filteredMaterialColors['Material 1'] || '',
+          material2: filteredMaterialColors['Material 2'] || '',
+          material3: filteredMaterialColors['Material 3'] || '',
+          type: requestType,
         });
-        // Provide feedback to the user
+
         swal('Success', 'Form submitted successfully!', 'success', {
           timer: 2000,
         });
+
         // Reset form state
         setRequestType('');
         setRequestDetails('');
