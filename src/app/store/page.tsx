@@ -122,8 +122,8 @@ const products: Product[] = [
     secondaryColor: [], // Array of color names
     thirdColor: [],
     price: '$20',
-    image: 'gecko',
-    redirect: '/images/Products/gecko.jpg',
+    image: '/images/Products/gecko.jpg',
+    redirect: 'gecko',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
