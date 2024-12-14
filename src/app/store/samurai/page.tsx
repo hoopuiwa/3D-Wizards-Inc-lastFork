@@ -54,7 +54,6 @@ const samurai: Product = {
   thirdColor: [],
   price: '$20',
   image: '/images/Products/samurai.jpg', // array of images depending on the color selected
-  image: , // array of images depending on the color selected
   size: {
     min: 0.5, // Minimum size
     max: 1.2, // Maximum size
