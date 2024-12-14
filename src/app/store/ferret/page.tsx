@@ -53,7 +53,7 @@ const ferret: Product = {
   secondaryColor: [], // Array of color names
   thirdColor: [],
   price: '$30',
-  image: '', // array of images depending on the color selected
+  image: '/images/Products/ferret.jpg', // array of images depending on the color selected
   size: {
     min: 0.5, // Minimum size
     max: 1.2, // Maximum size

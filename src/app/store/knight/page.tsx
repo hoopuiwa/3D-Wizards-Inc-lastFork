@@ -53,7 +53,7 @@ const knight: Product = {
   secondaryColor: [], // Array of color names
   thirdColor: [],
   price: '$20',
-  image: '', // array of images depending on the color selected
+  image: '/images/Products/knight.jpg', // array of images depending on the color selected
   size: {
     min: 0.5, // Minimum size
     max: 1.2, // Maximum size
