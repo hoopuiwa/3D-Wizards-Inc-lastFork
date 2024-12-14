@@ -123,7 +123,7 @@ const products: Product[] = [
     thirdColor: [],
     price: '$20',
     image: 'gecko',
-    redirect: '',
+    redirect: '/images/Products/gecko.jpg',
     size: {
       // Adjustable size range
       min: 0.5, // Minimum size
@@ -156,7 +156,7 @@ const products: Product[] = [
     secondaryColor: [], // Array of color names
     thirdColor: [],
     price: '$30',
-    image: '',
+    image: '/images/Products/ferret.jpg',
     redirect: 'ferret',
     size: {
       // Adjustable size range
@@ -190,7 +190,7 @@ const products: Product[] = [
     secondaryColor: [], // Array of color names
     thirdColor: [],
     price: '$25',
-    image: '',
+    image: '/images/Products/impd.jpg',
     redirect: 'imperialdragon',
     size: {
       // Adjustable size range
@@ -207,7 +207,7 @@ const products: Product[] = [
     secondaryColor: ['red', 'blue'], // Array of color names
     thirdColor: ['red', 'blue'], // Array of color names
     price: '$20',
-    image: '',
+    image: '/images/Products/knight.jpg',
     redirect: 'knight',
     size: {
       // Adjustable size range
@@ -224,7 +224,7 @@ const products: Product[] = [
     secondaryColor: ['red', 'blue'], // Array of color names
     thirdColor: ['red', 'blue', 'green'], // Array of color names
     price: '$20',
-    image: '',
+    image: '/images/Products/samurai.jpg',
     redirect: 'samurai',
     size: {
       // Adjustable size range
