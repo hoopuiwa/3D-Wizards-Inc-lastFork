@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
@@ -23,7 +24,7 @@ async function fetchProducts() {
 }
 
 // Directly export the HTTP method handler
-export default async function GET() {
+export async function GET() {
   const { products, error, status } = await fetchProducts();
   if (error) {
     return NextResponse.json({ error }, { status });
