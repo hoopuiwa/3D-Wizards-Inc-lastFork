@@ -7,6 +7,9 @@ import React, { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { Product } from '@prisma/client';
+import AdminProductRender from '@/components/AdminProductRender';
+import { Row, Col, Table, Container } from 'react-bootstrap';
 
 const AccountPage = () => {
   // State variables for name, email, address, phone number, and edit status
@@ -18,6 +21,21 @@ const AccountPage = () => {
 
   const { data: session, status } = useSession();
   const currentUser = session?.user?.email || '';
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const getProducts = async () => {
+    try {
+      const response = await fetch('/api/products/render');
+      if (!response.ok) {
+        console.error('Failed to fetch products');
+        return;
+      }
+      const fetchedProducts: Product[] = await response.json(); // Parse the JSON response
+      setProducts(fetchedProducts);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    }
+  };
 
   useEffect(() => {
     // Sync the email state with the current user's email from the session
@@ -31,6 +49,7 @@ const AccountPage = () => {
     if (savedName) setName(savedName);
     if (savedAddress) setAddress(savedAddress);
     if (savedPhone) setPhone(savedPhone);
+    getProducts();
   }, [currentUser]);
 
   useEffect(() => {
@@ -62,7 +81,7 @@ const AccountPage = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#f8f9fa', minHeight: '100%', paddingBottom: '20px' }}>
+    <div style={{ backgroundColor: '#f8f9fa', paddingBottom: '20px' }}>
       <div
         style={{
           maxWidth: '400px',
@@ -193,6 +212,49 @@ const AccountPage = () => {
           {isEditing ? '💾 Save' : '✏️ Edit'}
         </button>
       </div>
+      <hr style={{
+        border: 'none',
+        height: '2px',
+        background: 'linear-gradient(to right, #ddd, #bbb, #ddd)',
+        margin: '50px 0',
+      }}
+      />
+      <Container
+        className="fluid"
+        style={{
+          margin: '50px auto',
+          textAlign: 'center',
+          padding: '20px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          borderRadius: '10px',
+          backgroundColor: '#fff',
+        }}
+      >
+        <Row>
+          <Col>
+            <h1 className="pb-4">Checked out products</h1>
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>{}</th>
+                  <th>Option</th>
+                  <th>Size</th>
+                  <th>Primary Color</th>
+                  <th>Secondary Color</th>
+                  <th>Tertiary Color</th>
+                  <th>Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* should display all products where the owner fits the user.email property of above */}
+                {products.filter((product) => product.checkedout === true).map((product) => (
+                  <AdminProductRender key={product.id} {...product} />
+                ))}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
