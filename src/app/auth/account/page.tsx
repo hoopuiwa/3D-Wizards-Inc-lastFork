@@ -62,7 +62,7 @@ const AccountPage = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh', paddingTop: '50px' }}>
+    <div style={{ backgroundColor: '#f8f9fa', minHeight: '100vh' }}>
       <div
         style={{
           maxWidth: '400px',
