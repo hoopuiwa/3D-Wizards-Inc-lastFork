@@ -22,14 +22,11 @@ async function fetchProducts() {
   }
 }
 
-const handler = {
-  async GET() {
-    const { products, error, status } = await fetchProducts();
-    if (error) {
-      return NextResponse.json({ error }, { status });
-    }
-    return NextResponse.json(products);
-  },
-};
-
-export default handler;
+// Directly export the HTTP method handler
+export default async function GET() {
+  const { products, error, status } = await fetchProducts();
+  if (error) {
+    return NextResponse.json({ error }, { status });
+  }
+  return NextResponse.json(products);
+}
