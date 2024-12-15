@@ -6,7 +6,7 @@ import authOptions from '@/lib/authOptions';
 import { Product } from '@prisma/client';
 
 // Define the fetchProducts function
-export async function fetchProducts() {
+async function fetchProducts() {
   const session = await getServerSession(authOptions);
   const owner = session?.user?.email ?? '';
 
@@ -26,7 +26,7 @@ export async function fetchProducts() {
 }
 
 // Export the fetchProducts function with GET method
-export async function GET() {
+export default async function GET() {
   const products = await fetchProducts();
   return NextResponse.json(products);
 }
