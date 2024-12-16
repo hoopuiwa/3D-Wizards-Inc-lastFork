@@ -6,14 +6,10 @@ const BusinessPage = async () => (
     <Container id="about-us" fluid className="py-3">
       <Row className="justify-content-center align-items-center m-3">
         <Col md={8}>
-          <h3 className="py-4">Business Inquiries Placeholder</h3>
+          <h3 className="py-4">Business Inquiries</h3>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laboris nisi ut aliquip ex ea commodo consequat.
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident,
-            sunt in culpa qui officia deserunt mollit anim id est laborum.
+            If your business requires regularly produced 3D printed products, you may be in luck. We already have several clients that can vouch for our reliability and the quality of our product. A benefit of working with a local 3D printing service is that oversea shipping times and costs arent a factor to overcome, simply wait for us to drive over from Ewa at a schedule of your preference. Please reach out at the following email if you’d like more information includin, but not limited to, our wholesale prices.<br>
+            </br>3dwizardsinc@gmail.com
           </p>
         </Col>
       </Row>
