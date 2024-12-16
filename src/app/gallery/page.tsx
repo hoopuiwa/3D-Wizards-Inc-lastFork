@@ -41,6 +41,7 @@ const Gallery = () => {
               <Card>
                 <Card.Img variant="top" src={image.url} alt={`Gallery image ${image.id}`} className="rounded-2" />
               </Card>
+              <div className="empty-block" />
             </Col>
           ))}
         </Row>
