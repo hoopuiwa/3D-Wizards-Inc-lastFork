@@ -4,18 +4,18 @@ import { Container, Col, Row, Card } from 'react-bootstrap';
 
 const Gallery = () => {
   const images = [
-    { id: 1, url: '/images/3d-wizards-lowres.png' },
-    { id: 2, url: '/images/3d-wizards-lowres.png' },
-    { id: 3, url: '/images/3d-wizards-lowres.png' },
-    { id: 4, url: '/images/3d-wizards-lowres.png' },
-    { id: 5, url: '/images/3d-wizards-lowres.png' },
-    { id: 6, url: '/images/3d-wizards-lowres.png' },
-    { id: 7, url: '/images/3d-wizards-lowres.png' },
-    { id: 8, url: '/images/3d-wizards-lowres.png' },
-    { id: 9, url: '/images/3d-wizards-lowres.png' },
-    { id: 10, url: '/images/3d-wizards-lowres.png' },
-    { id: 11, url: '/images/3d-wizards-lowres.png' },
-    { id: 12, url: '/images/3d-wizards-lowres.png' },
+    { id: 1, url: '/images/Gall_1.jpg' },
+    { id: 2, url: '/images/Gall_2.jpg' },
+    { id: 3, url: '/images/Gall_3.jpg' },
+    { id: 4, url: '/images/Gall_4.jpg' },
+    { id: 5, url: '/images/Gall_5.jpg' },
+    { id: 6, url: '/images/Gall_5.jpg' },
+    { id: 7, url: '/images/Gall_7.jpg' },
+    { id: 8, url: '/images/Gall_8.jpg' },
+    { id: 9, url: '/images/Gall_9.jpg' },
+    { id: 10, url: '/images/Gall_10.jpg' },
+    { id: 11, url: '/images/Gall_11.jpg' },
+    { id: 12, url: '/images/Gall_12.jpg' },
   ];
 
   return (
@@ -25,8 +25,8 @@ const Gallery = () => {
           <Col>
             <h1 className="mb-3">Gallery</h1>
             <h5 className="mb-5">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit
+              We attend over 50 events per month and have a lot of fun doing so.
+              We also regularly work on complicated custom orders. Check out what we’ve been up to
             </h5>
           </Col>
         </Row>
