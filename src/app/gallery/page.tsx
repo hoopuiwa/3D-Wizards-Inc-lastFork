@@ -39,12 +39,17 @@ const Gallery = () => {
           {images.map((image) => (
             <Col key={image.id}>
               <Card>
-                <Card.Img variant="top" src={image.url} alt={`Gallery image ${image.id}`} className="rounded-2" />
+                <Card.Img
+                  variant="top"
+                  src={image.url}
+                  alt={`Gallery image ${image.id}`}
+                  className="rounded-2 aspect-ratio-3-4"
+                />
               </Card>
-              <div className="empty-block" />
             </Col>
           ))}
         </Row>
+        <div className="empty-block" />
       </Container>
     </main>
   );

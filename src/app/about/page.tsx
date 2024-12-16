@@ -29,41 +29,37 @@ const AboutUsPage = async () => (
           <h3 className="py-4">Our Team</h3>
           <Row className="mb-4">
             <Col className="d-flex align-items-center">
-              <Image src="/images/3d-wizards-lowres.png" alt="Voxel" width="240" height="240" />
+              <Image src="/images/Tom.JPG" alt="Tom" width="240" height="240" />
+              <h4>Tom</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                Team Lead, Head of Product Design, Print Farm Manager
               </p>
             </Col>
           </Row>
           <Row className="mb-4">
             <Col className="d-flex align-items-center">
-              <Image src="/images/3d-wizards-lowres.png" alt="Voxel" width="240" height="240" />
+              <Image src="/images/Aaron.JPG" alt="Aaron" width="240" height="240" />
+              <h4>Aaron</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                Retail and Business relations Manager
               </p>
             </Col>
           </Row>
           <Row className="mb-4">
             <Col className="d-flex align-items-center">
-              <Image src="/images/3d-wizards-lowres.png" alt="Voxel" width="240" height="240" />
+              <Image src="/images/Jesse.JPG" alt="Jesse" width="240" height="240" />
+              <h4>Jesse</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                Employee Manager
               </p>
             </Col>
           </Row>
           <Row className="mb-4">
             <Col className="d-flex align-items-center">
-              <Image src="/images/3d-wizards-lowres.png" alt="Voxel" width="240" height="240" />
+              <Image src="/images/David.JPG" alt="David" width="240" height="240" />
+              <h4>David</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                Retail Associate and Printer technician
               </p>
             </Col>
           </Row>
