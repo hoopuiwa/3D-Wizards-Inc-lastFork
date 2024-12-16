@@ -25,8 +25,13 @@ const Gallery = () => {
           <Col>
             <h1 className="mb-3">Gallery</h1>
             <h5 className="mb-5">
-              We attend over 50 events per month and have a lot of fun doing so.
-              We also regularly work on complicated custom orders. Check out what we’ve been up to
+              <h5 className="mb-5">
+                We attend over 50 events per month and have a lot of fun doing so.
+                <br />
+                We also regularly work on complicated custom orders.
+                <br />
+                Check out what we’ve been up to
+              </h5>
             </h5>
           </Col>
         </Row>
