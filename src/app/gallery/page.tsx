@@ -12,10 +12,10 @@ const Gallery = () => {
     { id: 6, url: '/images/Gall_6.jpg' },
     { id: 7, url: '/images/Gall_7.jpg' },
     { id: 8, url: '/images/Gall_8.jpg' },
-    { id: 9, url: '/images/Gall_9.jpg' },
-    { id: 10, url: '/images/Gall_10.jpg' },
-    { id: 11, url: '/images/Gall_11.jpg' },
-    { id: 12, url: '/images/Gall_12.jpg' },
+    { id: 9, url: '/images/Gall_9.JPG' },
+    { id: 10, url: '/images/Gall_10.JPG' },
+    { id: 11, url: '/images/Gall_11.JPG' },
+    { id: 12, url: '/images/Gall_12.JPG' },
   ];
 
   return (

@@ -7,7 +7,7 @@ const BusinessPage = async () => (
       <Row className="justify-content-center align-items-center m-3">
         <Col md={8}>
           <h1 className="py-4">Why Choose Us?</h1>
-          <h5>
+          <h6>
             If your business requires regularly produced 3D printed products,
             you may be in luck.
             <br />
@@ -21,7 +21,7 @@ const BusinessPage = async () => (
             Please reach out at
             the following email if you’d like more information including,
             but not limited to, our wholesale prices.
-          </h5>
+          </h6>
           <h5>
             <a href="mailto:3dwizardsinc@gmail.com">3dwizardsinc@gmail.com</a>
           </h5>
