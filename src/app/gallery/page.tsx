@@ -9,7 +9,7 @@ const Gallery = () => {
     { id: 3, url: '/images/Gall_3.jpg' },
     { id: 4, url: '/images/Gall_4.jpg' },
     { id: 5, url: '/images/Gall_5.jpg' },
-    { id: 6, url: '/images/Gall_5.jpg' },
+    { id: 6, url: '/images/Gall_6.jpg' },
     { id: 7, url: '/images/Gall_7.jpg' },
     { id: 8, url: '/images/Gall_8.jpg' },
     { id: 9, url: '/images/Gall_9.jpg' },
@@ -24,14 +24,15 @@ const Gallery = () => {
         <Row className="p-4 align-middle text-center">
           <Col>
             <h1 className="mb-3">Gallery</h1>
-            <h5 className="mb-5">
+            <br />
+            <h6 className="mb-5">
               <p>
                 We attend over 50 events per month and have a lot of fun doing so.
                 We also regularly work on complicated custom orders.
                 <br />
                 Check out what we’ve been up to
               </p>
-            </h5>
+            </h6>
           </Col>
         </Row>
         <Row xs={2} md={3} lg={4} className="g-4">
