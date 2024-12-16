@@ -16,7 +16,9 @@ const BusinessPage = async () => (
             drive over from Ewa at a schedule of your preference. Please reach out at
             the following email if you’d like more information includin,
             but not limited to, our wholesale prices.
-            <br>3dwizardsinc@gmail.com
+          </p>
+          <p>
+            3dwizardsinc@gmail.com
           </p>
         </Col>
       </Row>
