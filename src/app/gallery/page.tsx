@@ -43,7 +43,7 @@ const Gallery = () => {
                   variant="top"
                   src={image.url}
                   alt={`Gallery image ${image.id}`}
-                  className="rounded-2 aspect-ratio-3-4"
+                  className="rounded-2 aspect"
                 />
               </Card>
             </Col>

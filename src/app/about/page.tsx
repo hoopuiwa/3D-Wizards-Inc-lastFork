@@ -29,8 +29,9 @@ const AboutUsPage = async () => (
           <h3 className="py-4">Our Team</h3>
           <Row className="mb-4">
             <Col className="d-flex align-items-center">
-              <Image src="/images/Tom.JPG" alt="Tom" width="240" height="240" />
+              <Image src="/images/Tom.JPG" alt="Tom" width="240" height="320" />
               <h4>Tom</h4>
+              <br />
               <p>
                 Team Lead, Head of Product Design, Print Farm Manager
               </p>
@@ -38,8 +39,9 @@ const AboutUsPage = async () => (
           </Row>
           <Row className="mb-4">
             <Col className="d-flex align-items-center">
-              <Image src="/images/Aaron.JPG" alt="Aaron" width="240" height="240" />
+              <Image src="/images/Aaron.JPG" alt="Aaron" width="240" height="320" />
               <h4>Aaron</h4>
+              <br />
               <p>
                 Retail and Business relations Manager
               </p>
@@ -47,8 +49,9 @@ const AboutUsPage = async () => (
           </Row>
           <Row className="mb-4">
             <Col className="d-flex align-items-center">
-              <Image src="/images/Jesse.JPG" alt="Jesse" width="240" height="240" />
+              <Image src="/images/Jesse.JPG" alt="Jesse" width="240" height="320" />
               <h4>Jesse</h4>
+              <br />
               <p>
                 Employee Manager
               </p>
@@ -56,8 +59,9 @@ const AboutUsPage = async () => (
           </Row>
           <Row className="mb-4">
             <Col className="d-flex align-items-center">
-              <Image src="/images/David.JPG" alt="David" width="240" height="240" />
+              <Image src="/images/David.JPG" alt="David" width="240" height="320" />
               <h4>David</h4>
+              <br />
               <p>
                 Retail Associate and Printer technician
               </p>
